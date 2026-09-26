@@ -1,0 +1,577 @@
+<title>The New Porker</title>
+<meta name="description" content="Design mockup for The New Porker, a satirical magazine about animals doing wild things.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Libre+Franklin:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<style>
+:root{
+  --paper:#FCFBF8; --ink:#1B1816; --ink-soft:#6A5E57; --rule:#E3DDD6;
+  --snout:#C8435F; --snout-wash:#FBE5EA; --tile:#FFFFFF;
+  --kibble:#F2D66B; --tuna:#9CCB86; --catnip:#8DB6E0; --hairball:#B99AD6; --band-ink:#1B1816;
+  --display:"Gloock", "Georgia", serif;
+  --body:"Newsreader", "Georgia", serif;
+  --ui:"Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#17141A; --ink:#EDE7E3; --ink-soft:#A89C96; --rule:#332D34;
+    --snout:#F08CA2; --snout-wash:#33202A; --tile:#221E25;
+    --kibble:#C9A93A; --tuna:#6E9C5B; --catnip:#5A86B3; --hairball:#8C6CB0; --band-ink:#120F13;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#17141A; --ink:#EDE7E3; --ink-soft:#A89C96; --rule:#332D34;
+  --snout:#F08CA2; --snout-wash:#33202A; --tile:#221E25;
+  --kibble:#C9A93A; --tuna:#6E9C5B; --catnip:#5A86B3; --hairball:#8C6CB0; --band-ink:#120F13;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;padding-inline:16px;padding-block:0 40px}
+.wrap{max-width:1180px;margin:0 auto}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--snout)}
+:focus-visible{outline:2px solid var(--snout);outline-offset:2px}
+.rubric{font-family:var(--ui);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--snout)}
+.meta{font-family:var(--ui);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;line-height:1.08}
+p{margin:0}
+
+/* banner */
+.proto{font-family:var(--ui);font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-align:center;color:var(--ink-soft);padding:8px 0;border-bottom:1px solid var(--rule)}
+
+/* masthead */
+.utility{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0 0;font-family:var(--ui);font-size:12px;color:var(--ink-soft)}
+.utility .sub{border:1px solid var(--ink);color:var(--ink);padding:6px 12px;border-radius:999px;font-weight:600;background:none;font:inherit;font-weight:600;cursor:pointer}
+.utility .sub:hover{background:var(--ink);color:var(--paper)}
+.mast{text-align:center;padding:18px 0 10px}
+.mast h1{font-size:clamp(40px,8vw,84px);letter-spacing:.01em;line-height:1}
+.mast h1 .snout{display:inline-block;width:.42em;height:.3em;border-radius:50%;background:var(--snout);position:relative;vertical-align:.12em;margin:0 .06em}
+.mast h1 .snout::before,.mast h1 .snout::after{content:"";position:absolute;top:35%;width:14%;height:36%;border-radius:50%;background:var(--paper)}
+.mast h1 .snout::before{left:26%}.mast h1 .snout::after{right:26%}
+.tagline{font-style:italic;color:var(--ink-soft);font-size:16px;margin-top:6px}
+nav.primary{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 26px;border-block:1px solid var(--ink);padding:10px 0;margin-top:14px;font-family:var(--ui);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+nav.primary a[aria-current]{color:var(--snout)}
+
+/* lead */
+.lead{display:grid;grid-template-columns:7fr 5fr;gap:36px;align-items:center;padding:36px 0;border-bottom:1px solid var(--rule)}
+.art{background:var(--snout-wash);aspect-ratio:3/2;max-width:100%;display:grid;place-items:center;overflow:hidden}
+.art svg{width:78%;height:auto}
+.lead h2{font-size:clamp(32px,4.4vw,54px);margin:10px 0 14px}
+.dek{font-style:italic;font-size:20px;color:var(--ink-soft)}
+.byline{margin-top:16px}
+.credit{font-family:var(--ui);font-size:11px;color:var(--ink-soft);margin-top:6px}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 36px;padding:32px 0}
+.card{display:flex;flex-direction:column;gap:8px}
+.card h3{font-size:25px}
+.card .dek{font-size:16px}
+.card .art svg{width:60%}
+
+/* games strip */
+.games{background:var(--snout-wash);margin:12px 0 0;padding:32px 0 40px;border-top:3px solid var(--snout)}
+.games-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.games-head h2{font-size:40px}
+.games-head p{font-style:italic;color:var(--ink-soft)}
+.gcards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.gcard{background:var(--paper);border:1px solid var(--rule);padding:16px;display:flex;flex-direction:column;gap:6px;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.gcard:hover{border-color:var(--ink)}
+.gcard[aria-pressed="true"]{border-color:var(--snout);box-shadow:0 0 0 1px var(--snout)}
+.gcard .name{font-family:var(--display);font-size:22px}
+.gcard .pitch{font-size:15px;color:var(--ink-soft);line-height:1.4}
+.gcard .parody{font-family:var(--ui);font-size:11px;color:var(--ink-soft)}
+.pill{align-self:flex-start;font-family:var(--ui);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;border-radius:999px;padding:2px 8px;margin-top:auto}
+.pill.hot{color:var(--snout)}
+.stage{display:grid;grid-template-columns:minmax(0,520px) minmax(0,1fr);gap:40px;margin-top:28px;align-items:start}
+.board{background:var(--paper);border:1px solid var(--rule);padding:22px}
+.board-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid var(--rule);padding-bottom:12px;margin-bottom:16px}
+.board-head h3{font-size:28px}
+.notes{font-size:17px}
+.notes h3{font-size:26px;margin-bottom:10px}
+.notes ul{padding-left:20px;margin:10px 0 0;display:grid;gap:6px}
+.notes .rubric{display:block;margin-bottom:6px}
+
+/* tiles shared */
+button.tile{font-family:var(--ui);font-weight:700;text-transform:uppercase;background:var(--tile);color:var(--ink);border:2px solid var(--ink);border-radius:6px;cursor:pointer;transition:transform .09s ease-out, background .09s}
+button.tile:active{transform:scale(.96)}
+button.tile[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btnrow{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:16px}
+.btn{font-family:var(--ui);font-size:13px;font-weight:600;padding:10px 18px;border-radius:999px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn:disabled{opacity:.4;cursor:default}
+.toast{min-height:28px;text-align:center;margin-bottom:8px}
+.toast span{display:inline-block;background:var(--ink);color:var(--paper);font-family:var(--ui);font-size:13px;padding:4px 12px;border-radius:999px}
+
+/* catagories */
+.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;transition:transform .5s ease-in, opacity .5s}
+.cgrid button.tile{font-size:clamp(11px,2.6vw,14px);aspect-ratio:1.25;padding:4px;overflow-wrap:anywhere}
+.cgrid.knocked{transform:translateX(120%) rotate(12deg);opacity:0}
+.band{grid-column:1/-1;border-radius:6px;padding:10px;text-align:center;color:var(--band-ink);font-family:var(--ui)}
+.band b{display:block;text-transform:uppercase;letter-spacing:.06em;font-size:13px}
+.band small{font-size:12px;text-transform:uppercase}
+.band .lvl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.paws{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:14px;font-family:var(--ui);font-size:13px;color:var(--ink-soft)}
+.paw{width:18px;height:18px;color:var(--ink)}
+.paw.gone{opacity:.15}
+
+/* snuffalo */
+.word{font-family:var(--ui);font-weight:700;font-size:28px;letter-spacing:.1em;text-align:center;min-height:42px;text-transform:uppercase}
+.word .t{color:var(--snout)}
+.caret{display:inline-block;width:2px;height:28px;background:var(--snout);vertical-align:-4px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.flower{position:relative;width:260px;height:250px;margin:6px auto 0}
+.flower button.tile{position:absolute;width:76px;height:76px;font-size:26px;border-radius:50%}
+.flower button.tile.truffle{background:var(--snout);color:#fff;border-color:var(--snout)}
+.rank{display:flex;align-items:center;gap:10px;font-family:var(--ui);font-size:13px;margin-bottom:10px}
+.rank b{min-width:84px}
+.bar{flex:1;height:4px;background:var(--rule);position:relative;border-radius:2px}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--snout);border-radius:2px;transition:width .24s ease-out}
+.found{font-family:var(--ui);font-size:13px;border:1px solid var(--rule);padding:10px 12px;margin-top:14px;color:var(--ink-soft);min-height:42px}
+.found span{color:var(--ink);text-transform:capitalize}
+
+/* lower */
+.lower{display:grid;grid-template-columns:5fr 7fr;gap:40px;padding:36px 0;border-bottom:1px solid var(--rule)}
+.cartoon{border:1px solid var(--rule);padding:18px}
+.cartoon svg{width:100%;height:auto;display:block;color:var(--ink)}
+.cartoon figcaption{font-style:italic;text-align:center;margin-top:12px;font-size:18px}
+.talk h2{font-size:34px;margin:6px 0 16px}
+.talk ol{list-style:none;padding:0;margin:0;display:grid}
+.talk li{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--rule)}
+.talk li .meta{padding-top:5px;font-size:11px;overflow-wrap:anywhere}
+.talk li h3{font-size:21px}
+.talk li p{font-size:16px;color:var(--ink-soft);margin-top:4px}
+
+footer{padding:32px 0 0;display:grid;grid-template-columns:2fr 3fr;gap:36px}
+footer .logo{font-family:var(--display);font-size:30px}
+.disclaimer{font-size:14px;color:var(--ink-soft);line-height:1.5}
+.nl{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.nl input{flex:1;min-width:0;font:inherit;font-size:15px;padding:8px 12px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);border-radius:999px}
+.nl-msg{font-family:var(--ui);font-size:13px;color:var(--snout);margin-top:8px;min-height:18px}
+
+/* paywall */
+.paywall{position:fixed;left:0;right:0;bottom:0;background:var(--snout-wash);border-top:3px solid var(--snout);padding:20px 16px calc(20px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center}
+.paywall .in{max-width:720px;display:flex;gap:16px 24px;align-items:center;flex-wrap:wrap}
+.paywall h3{font-size:24px}
+.paywall p{font-size:15px;color:var(--ink-soft)}
+
+@media (max-width:960px){
+  .gcards{grid-template-columns:repeat(3,1fr)}
+  .stage{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .lead,.lower,footer{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  .gcards{grid-template-columns:repeat(2,1fr)}
+  .utility .hide-sm{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+</style>
+
+<div class="wrap">
+  <div class="proto">Design mockup · The New Porker is satire and is not affiliated with The New Yorker or Condé Nast</div>
+
+  <div class="utility">
+    <span class="hide-sm">Saturday, September 26, 2026 · Issue No. 4,112½</span>
+    <span><a href="#newsletter">Newsletter</a></span>
+    <button class="sub" id="subBtn" type="button">Subscribe</button>
+  </div>
+
+  <header class="mast">
+    <h1>The New P<span class="snout" aria-hidden="true"></span>rker</h1>
+    <p class="tagline" id="tagline">All the news that’s fit to snout.</p>
+    <nav class="primary" aria-label="Sections">
+      <a href="#news" aria-current="page">News</a>
+      <a href="#news">Snouts &amp; Murmurs</a>
+      <a href="#talk">Talk of the Farm</a>
+      <a href="#news">The Critics</a>
+      <a href="#cartoon">Cartoons</a>
+      <a href="#games">Games</a>
+      <a href="#news">The Magazine</a>
+    </nav>
+  </header>
+
+  <main id="news">
+    <article class="lead">
+      <div class="art" role="img" aria-label="Illustration: a raccoon holding a picket sign that reads LIDS FOR ALL">
+        <svg viewBox="0 0 300 200" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="178" y="30" width="96" height="58" fill="var(--paper)"/>
+          <text x="226" y="55" text-anchor="middle" font-family="Libre Franklin, Arial, sans-serif" font-weight="700" font-size="14" fill="currentColor" stroke="none">LIDS</text>
+          <text x="226" y="75" text-anchor="middle" font-family="Libre Franklin, Arial, sans-serif" font-weight="700" font-size="14" fill="currentColor" stroke="none">FOR ALL</text>
+          <line x1="226" y1="88" x2="226" y2="170"/>
+          <path d="M60 190 C60 140 80 118 118 118 C156 118 176 140 176 190" fill="var(--paper)"/>
+          <path d="M72 70 L62 36 L92 56" fill="var(--paper)"/>
+          <path d="M164 70 L174 36 L144 56" fill="var(--paper)"/>
+          <ellipse cx="118" cy="84" rx="54" ry="44" fill="var(--paper)"/>
+          <path d="M72 80 Q92 64 112 82 Q118 88 124 82 Q144 64 164 80 Q150 100 124 94 Q118 100 112 94 Q86 100 72 80Z" fill="currentColor"/>
+          <circle cx="98" cy="82" r="4" fill="var(--paper)" stroke="none"/>
+          <circle cx="138" cy="82" r="4" fill="var(--paper)" stroke="none"/>
+          <ellipse cx="118" cy="110" rx="7" ry="5" fill="currentColor"/>
+          <path d="M170 150 Q200 150 222 150" />
+          <circle cx="222" cy="150" r="8" fill="var(--paper)"/>
+          <path d="M176 180 q20 6 30 -6 q10 12 24 4" />
+        </svg>
+      </div>
+      <div>
+        <span class="rubric">The Burrow-witz Report</span>
+        <h2><a href="#news">Raccoons Win Right to Collective Bargaining Over Municipal Bins</a></h2>
+        <p class="dek">After a three-week strike, the trash pandas have secured lid access, dental, and a firm commitment to “tuna Thursdays.”</p>
+        <p class="meta byline">By Hortense Quill-Hogg · 4 min read</p>
+        <p class="credit">Illustration by Barnaby Stoat</p>
+      </div>
+    </article>
+
+    <section class="grid" aria-label="More stories">
+      <article class="card">
+        <div class="art" role="img" aria-label="Illustration: an octopus in a graduation cap">
+          <svg viewBox="0 0 200 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M60 30 L100 14 L140 30 L100 46Z" fill="currentColor"/>
+            <path d="M136 30 v18"/>
+            <path d="M66 74 C66 40 134 40 134 74 C134 90 120 96 100 96 C80 96 66 90 66 74Z" fill="var(--paper)"/>
+            <circle cx="88" cy="70" r="4" fill="currentColor"/><circle cx="112" cy="70" r="4" fill="currentColor"/>
+            <path d="M72 92 q-10 20 -26 22 M84 96 q-4 22 -16 30 M100 96 v32 M116 96 q4 22 16 30 M128 92 q10 20 26 22"/>
+          </svg>
+        </div>
+        <span class="rubric">Annals of Instinct</span>
+        <h3><a href="#news">Octopus Admitted to Yale Early Decision, Plans to Major in Escaping</a></h3>
+        <p class="dek">Her essay was about a jar. The committee called it “unscrewable.”</p>
+        <p class="meta">By Percival Mudd · 12 min read</p>
+      </article>
+      <article class="card">
+        <div class="art" role="img" aria-label="Illustration: a goose holding a complaint form">
+          <svg viewBox="0 0 200 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M70 120 C50 100 60 70 90 70 C104 70 108 60 106 40 C104 22 124 18 130 30 L150 34 L132 42 C128 60 126 76 130 90 C136 112 110 126 70 120Z" fill="var(--paper)"/>
+            <circle cx="122" cy="30" r="3" fill="currentColor"/>
+            <rect x="140" y="72" width="36" height="46" fill="var(--paper)"/>
+            <path d="M148 84 h20 M148 94 h20 M148 104 h12"/>
+          </svg>
+        </div>
+        <span class="rubric">Talk of the Farm</span>
+        <h3><a href="#news">Local Goose Files 400th Noise Complaint Against Himself</a></h3>
+        <p class="dek">“Someone around here is honking at all hours,” he said, honking.</p>
+        <p class="meta">By Imogen Fetlock · 3 min read</p>
+      </article>
+      <article class="card">
+        <div class="art" role="img" aria-label="Illustration: a cat sitting inside a cardboard box">
+          <svg viewBox="0 0 200 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M74 64 L80 34 L96 52 L108 52 L124 34 L128 64" fill="var(--paper)"/>
+            <ellipse cx="101" cy="68" rx="30" ry="22" fill="var(--paper)"/>
+            <path d="M88 66 q4 -4 8 0 M106 66 q4 -4 8 0"/>
+            <path d="M52 80 H150 V128 H52Z" fill="var(--paper)"/>
+            <path d="M52 80 L38 64 M150 80 L164 64"/>
+          </svg>
+        </div>
+        <span class="rubric">Snouts &amp; Murmurs</span>
+        <h3><a href="#news">Opinion: I Am a Cat and I Did Not Ask to Be Born Into This Box</a></h3>
+        <p class="dek">I merely got in. There is a difference, and I would like it on the record.</p>
+        <p class="meta">By Mittens (as told to nobody) · 5 min read</p>
+      </article>
+    </section>
+  </main>
+
+  <section class="games" id="games" aria-labelledby="games-title">
+    <div class="wrap" style="padding-inline:clamp(0px,2vw,24px)">
+      <div class="games-head">
+        <div>
+          <span class="rubric">Puzzles &amp; Games</span>
+          <h2 id="games-title">Today at the Trough</h2>
+        </div>
+        <p>New puzzles every morning at midnight, Eastern Swine Time.</p>
+      </div>
+
+      <div class="gcards" role="group" aria-label="Choose a game">
+        <button class="gcard" type="button" data-game="catagories" aria-pressed="true">
+          <span class="name">Catagories</span>
+          <span class="pitch">Sort sixteen words into four groups before the cat loses patience.</span>
+          <span class="parody">after Categories</span>
+          <span class="pill hot">Playable below</span>
+        </button>
+        <button class="gcard" type="button" data-game="snuffalo" aria-pressed="false">
+          <span class="name">Snuffalo</span>
+          <span class="pitch">Root out words around the truffle letter. Find the Whole Hog.</span>
+          <span class="parody">after Shuffalo</span>
+          <span class="pill hot">Playable below</span>
+        </button>
+        <div class="gcard" aria-disabled="true">
+          <span class="name">Name Droppings</span>
+          <span class="pitch">Guess the famous animal from five increasingly obvious clues.</span>
+          <span class="parody">after Name Drop</span>
+          <span class="pill">Design only</span>
+        </div>
+        <div class="gcard" aria-disabled="true">
+          <span class="name">The Crossbeak</span>
+          <span class="pitch">A five-by-five mini. Today’s theme: things that go in a nest.</span>
+          <span class="parody">after the Mini</span>
+          <span class="pill">Design only</span>
+        </div>
+        <div class="gcard" aria-disabled="true">
+          <span class="name">Hold Your Horses</span>
+          <span class="pitch">The weekly cartoon caption contest. Vote on the finalists.</span>
+          <span class="parody">after the Caption Contest</span>
+          <span class="pill">Design only</span>
+        </div>
+      </div>
+
+      <div class="stage">
+        <!-- Catagories -->
+        <div class="board" id="catagories">
+          <div class="board-head">
+            <h3>Catagories</h3>
+            <span class="meta">No. 41 · Sept. 26</span>
+          </div>
+          <div class="toast" aria-live="polite" id="cToast"></div>
+          <div class="cgrid" id="cGrid"></div>
+          <div class="paws" id="cPaws" aria-label="Mistakes remaining"></div>
+          <div class="btnrow">
+            <button class="btn" type="button" id="cShuffle">Shuffle</button>
+            <button class="btn" type="button" id="cClear">Deselect all</button>
+            <button class="btn primary" type="button" id="cSubmit" disabled>Submit</button>
+          </div>
+        </div>
+
+        <!-- Snuffalo -->
+        <div class="board" id="snuffalo" hidden>
+          <div class="board-head">
+            <h3>Snuffalo</h3>
+            <span class="meta">No. 41 · Sept. 26</span>
+          </div>
+          <div class="rank"><b id="sRank">Piglet</b><div class="bar"><i id="sBar" style="width:0%"></i></div><span id="sScore" style="font-variant-numeric:tabular-nums">0 pts</span></div>
+          <div class="toast" aria-live="polite" id="sToast"></div>
+          <div class="word" id="sWord"><span class="caret"></span></div>
+          <div class="flower" id="sFlower"></div>
+          <div class="btnrow">
+            <button class="btn" type="button" id="sDel">Delete</button>
+            <button class="btn" type="button" id="sShuf">Shuffle</button>
+            <button class="btn primary" type="button" id="sEnter">Enter</button>
+          </div>
+          <div class="found" id="sFound">You have found 0 words.</div>
+        </div>
+
+        <div class="notes" id="notes"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lower">
+    <figure class="cartoon" id="cartoon" style="margin:0">
+      <span class="rubric">Cartoon of the Day</span>
+      <svg viewBox="0 0 320 200" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Cartoon: two cows at a bar, one holding a martini">
+        <path d="M10 150 H310"/>
+        <path d="M30 150 V190 M290 150 V190"/>
+        <path d="M60 150 C50 110 60 70 100 70 C140 70 150 110 140 150" fill="var(--paper)"/>
+        <path d="M78 70 C70 40 130 40 122 70" fill="var(--paper)"/>
+        <path d="M76 52 l-14 -8 M124 52 l14 -8"/>
+        <ellipse cx="100" cy="80" rx="18" ry="10" fill="var(--paper)"/>
+        <circle cx="92" cy="80" r="2" fill="currentColor"/><circle cx="108" cy="80" r="2" fill="currentColor"/>
+        <circle cx="88" cy="58" r="2.5" fill="currentColor"/><circle cx="112" cy="58" r="2.5" fill="currentColor"/>
+        <path d="M200 150 C190 110 200 70 240 70 C280 70 290 110 280 150" fill="var(--paper)"/>
+        <path d="M218 70 C210 40 270 40 262 70" fill="var(--paper)"/>
+        <path d="M216 52 l-14 -8 M264 52 l14 -8"/>
+        <ellipse cx="240" cy="80" rx="18" ry="10" fill="var(--paper)"/>
+        <circle cx="232" cy="80" r="2" fill="currentColor"/><circle cx="248" cy="80" r="2" fill="currentColor"/>
+        <path d="M228 58 h8 M244 58 h8"/>
+        <path d="M168 118 L184 118 L176 130 Z M176 130 V146 M170 148 H182"/>
+        <circle cx="176" cy="122" r="2" fill="currentColor"/>
+      </svg>
+      <figcaption>“I’m not saying I’m <em>unhappy</em> on the dairy. I’m saying I’ve started asking what the milk is <em>for</em>.”</figcaption>
+    </figure>
+
+    <div class="talk" id="talk">
+      <span class="rubric">Talk of the Farm</span>
+      <h2>Dispatches</h2>
+      <ol>
+        <li><span class="meta">Finance</span><div><h3><a href="#talk">Crows Launch Venture Fund Focused Exclusively on Shiny Things</a></h3><p>Their first investment was a bottle cap. Their second was a different bottle cap.</p></div></li>
+        <li><span class="meta">Society</span><div><h3><a href="#talk">Emperor Penguin Announces Divorce in Carefully Worded Post</a></h3><p>The couple asks for privacy, and for everyone to stop pointing out that they look identical.</p></div></li>
+        <li><span class="meta">Infrastructure</span><div><h3><a href="#talk">Beaver Dam Project Over Budget, Behind Schedule</a></h3><p>Critics call the overruns “very beaver.” The beaver called them “a feature.”</p></div></li>
+        <li><span class="meta">Crime</span><div><h3><a href="#talk">Pigeon Arrested for Impersonating a Dove at Wedding</a></h3><p>Guests became suspicious when he ate a french fry off the cake.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <footer id="newsletter">
+    <div>
+      <div class="logo">The New Porker</div>
+      <p class="disclaimer" style="margin-top:8px">The Daily Trough newsletter: one absurd headline and today’s puzzles, every morning.</p>
+      <form class="nl" id="nlForm" novalidate>
+        <label for="nlEmail" class="meta" style="flex-basis:100%">Email address</label>
+        <input id="nlEmail" type="email" placeholder="you@barn.com" autocomplete="email">
+        <button class="btn primary" type="submit">Sign up</button>
+      </form>
+      <p class="nl-msg" id="nlMsg" aria-live="polite"></p>
+    </div>
+    <p class="disclaimer">The New Porker is a work of satire. It is not affiliated with, endorsed by, or connected to The New Yorker or Condé Nast. All stories are fiction. All animals are fictional, except the ones who are just very good. No raccoons were harmed in the making of this issue, though several were mildly inconvenienced.</p>
+  </footer>
+</div>
+
+<div class="paywall" id="paywall" hidden role="dialog" aria-labelledby="pwTitle">
+  <div class="in">
+    <div style="flex:1 1 320px">
+      <h3 id="pwTitle">You’ve read 3 of 3 free kibbles this month.</h3>
+      <p>Subscribe for unlimited access to fictional animals doing things they should not.</p>
+    </div>
+    <div class="btnrow" style="margin:0">
+      <button class="btn primary" type="button" data-close>Subscribe for $0 and a belly rub</button>
+      <button class="btn" type="button" data-close>Keep reading anyway</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const $ = s => document.querySelector(s);
+  const toast = (el, msg) => { el.innerHTML = '<span></span>'; el.firstChild.textContent = msg; clearTimeout(el._t); el._t = setTimeout(() => el.innerHTML = '', 1800); };
+  const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+  // Tagline rotation
+  const tags = ["All the news that’s fit to snout.", "Est. whenever the pigs got literate.", "Reporting from the trough since 1925½."];
+  let ti = 0; setInterval(() => { ti = (ti + 1) % tags.length; $('#tagline').textContent = tags[ti]; }, 5000);
+
+  // Paywall + newsletter
+  $('#subBtn').addEventListener('click', () => { $('#paywall').hidden = false; });
+  document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => { $('#paywall').hidden = true; }));
+  $('#nlForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const v = $('#nlEmail').value.trim();
+    $('#nlMsg').textContent = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)
+      ? "You’re on the list. (Mockup only: nothing was sent.)"
+      : "Enter an email like name@barn.com.";
+  });
+
+  // Game switcher + notes
+  const notes = {
+    catagories: `<span class="rubric">How it works</span><h3>Catagories</h3>
+      <p>Select four tiles that share something, then submit. Four mistakes and the cat knocks the puzzle off the table.</p>
+      <ul><li><b>Kibble</b> (yellow) is the easiest group; <b>Hairball</b> (purple) is the trickiest.</li>
+      <li>Each wrong guess costs one paw print.</li>
+      <li>“One away…” appears when three of four are right.</li>
+      <li>Try losing on purpose to see the knock-off animation.</li></ul>`,
+    snuffalo: `<span class="rubric">How it works</span><h3>Snuffalo</h3>
+      <p>Make words of four or more letters. Every word must use the pink truffle letter. Letters can repeat.</p>
+      <ul><li>Four-letter words score 1; longer words score 1 per letter.</li>
+      <li>Use all seven letters for a <b>Whole Hog</b> (+7).</li>
+      <li>Ranks: Piglet, Shoat, Rooter, Truffler, Mudlark, Prize Hog, Hog Wild.</li>
+      <li>Type on your keyboard, or tap the tiles. Space shuffles.</li></ul>`
+  };
+  let current = 'catagories';
+  function show(game){
+    current = game;
+    document.querySelectorAll('.gcard[data-game]').forEach(b => b.setAttribute('aria-pressed', b.dataset.game === game));
+    $('#catagories').hidden = game !== 'catagories';
+    $('#snuffalo').hidden = game !== 'snuffalo';
+    $('#notes').innerHTML = notes[game];
+  }
+  document.querySelectorAll('.gcard[data-game]').forEach(b => b.addEventListener('click', () => show(b.dataset.game)));
+  show('catagories');
+
+  // ---------- Catagories ----------
+  const groups = [
+    {name:"Things a cat knocks off the table", lvl:"Kibble", color:"var(--kibble)", words:["GLASS","PEN","VASE","KEYS"]},
+    {name:"___ nap", lvl:"Tuna", color:"var(--tuna)", words:["CAT","POWER","DIRT","KID"]},
+    {name:"Wild cats", lvl:"Catnip", color:"var(--catnip)", words:["PUMA","LYNX","OCELOT","JAGUAR"]},
+    {name:"Hidden “cat”", lvl:"Hairball", color:"var(--hairball)", words:["SCATTER","VACATE","LOCATE","EDUCATE"]}
+  ];
+  const pawSvg = '<svg class="paw" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="12" cy="16" rx="5" ry="4.2"/><circle cx="5.5" cy="10" r="2.2"/><circle cx="9.5" cy="6" r="2.2"/><circle cx="14.5" cy="6" r="2.2"/><circle cx="18.5" cy="10" r="2.2"/></svg>';
+  let cTiles, cSel, cSolved, cMistakes, cGuesses, cOver;
+  function cReset(){
+    cTiles = shuffle(groups.flatMap(g => g.words)); cSel = new Set(); cSolved = []; cMistakes = 0; cGuesses = new Set(); cOver = false;
+    $('#cGrid').classList.remove('knocked'); cRender();
+  }
+  function cRender(){
+    const grid = $('#cGrid'); grid.innerHTML = '';
+    cSolved.forEach(g => {
+      const d = document.createElement('div'); d.className = 'band'; d.style.background = g.color;
+      d.innerHTML = `<span class="lvl">${g.lvl}</span><b></b><small>${g.words.join(', ')}</small>`;
+      d.querySelector('b').textContent = g.name; grid.appendChild(d);
+    });
+    cTiles.forEach(w => {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'tile'; b.textContent = w;
+      b.setAttribute('aria-pressed', cSel.has(w)); b.disabled = cOver;
+      b.addEventListener('click', () => {
+        if (cSel.has(w)) cSel.delete(w); else if (cSel.size < 4) cSel.add(w);
+        cRender();
+      });
+      grid.appendChild(b);
+    });
+    const left = 4 - cMistakes;
+    $('#cPaws').innerHTML = 'Mistakes remaining: ' + Array.from({length:4}, (_, i) => pawSvg.replace('class="paw"', i < left ? 'class="paw"' : 'class="paw gone"')).join('');
+    $('#cSubmit').disabled = cSel.size !== 4 || cOver;
+    $('#cShuffle').textContent = cOver ? 'Play again' : 'Shuffle';
+  }
+  $('#cShuffle').addEventListener('click', () => { if (cOver) { cReset(); return; } shuffle(cTiles); cRender(); });
+  $('#cClear').addEventListener('click', () => { cSel.clear(); cRender(); });
+  $('#cSubmit').addEventListener('click', () => {
+    const pick = [...cSel].sort(); const key = pick.join('|');
+    if (cGuesses.has(key)) { toast($('#cToast'), 'Already guessed. The cat noticed.'); return; }
+    cGuesses.add(key);
+    const hit = groups.find(g => g.words.every(w => cSel.has(w)));
+    if (hit) {
+      cSolved.push(hit); cTiles = cTiles.filter(w => !cSel.has(w)); cSel.clear();
+      if (cSolved.length === 4) { cOver = true; toast($('#cToast'), 'Purrfect. The cat is unimpressed, as always.'); }
+      else toast($('#cToast'), ['Fine.', 'Acceptable.', 'The cat blinks slowly.'][cSolved.length - 1]);
+      cRender(); return;
+    }
+    const oneAway = groups.some(g => g.words.filter(w => cSel.has(w)).length === 3);
+    cMistakes++;
+    if (cMistakes >= 4) {
+      cOver = true; cSel.clear(); toast($('#cToast'), 'The cat has knocked your puzzle off the table.');
+      $('#cGrid').classList.add('knocked');
+      setTimeout(() => { groups.forEach(g => { if (!cSolved.includes(g)) cSolved.push(g); }); cTiles = []; $('#cGrid').classList.remove('knocked'); cRender(); }, 700);
+      cRender(); return;
+    }
+    toast($('#cToast'), oneAway ? 'One away…' : 'Swat. That is not a group.');
+    cRender();
+  });
+  cReset();
+
+  // ---------- Snuffalo ----------
+  const center = 'O', outer = ['S','N','U','T','E','R'];
+  const dict = new Set("SNOUT SNOUTS ROUTE ROUTES ROUTER ROUTERS TOUR TOURS ROUT ROUTS SNORE SNORES SNORER STONE STONES STONER TONE TONES TONER TONERS NOTE NOTES ONSET TENOR TENORS STORE STORES SORE ROSE ROSES NOSE NOSES ONES TORE TOES ROTE EURO EUROS SOUR SOURS UNTO SNOT SNORT SNORTS TROUT TROUTS TOOT TOOTS SOON NOON ROOT ROOTS ROOST ROOSTER SNOOT SNOOTS OUST OUTER OUTERS ROUSE TOUT TOUTS TENSOR RESORT ROSTER RETRO TORN TONSURE TONSURES TONNE TONNES TORSO TOSS TOTE TOTES SOOT ONTO TOSSER STENO NEON TOON TOONS ONUS TORUS OUTRE SNOOTER TREMOR ERROR TERROR ROTOR ROTORS TOTS NOES".split(' ').filter(w => w.length >= 4 && [...w].every(c => c === center || outer.includes(c)) && w.includes(center)));
+  const score = w => (w.length === 4 ? 1 : w.length) + (new Set(w).size === 7 ? 7 : 0);
+  const maxScore = [...dict].reduce((a, w) => a + score(w), 0);
+  const ranks = [["Piglet",0],["Shoat",.05],["Rooter",.12],["Truffler",.22],["Mudlark",.35],["Prize Hog",.55],["Hog Wild",.8]];
+  let sWord = '', sFound = [], sPts = 0, sOuter = outer.slice();
+  const pos = [[92,0],[176,46],[176,134],[92,176],[8,134],[8,46]];
+  function sRenderFlower(){
+    const f = $('#sFlower'); f.innerHTML = '';
+    const mk = (L, x, y, t) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'tile' + (t ? ' truffle' : ''); b.textContent = L; b.style.left = x + 'px'; b.style.top = y + 'px'; b.setAttribute('aria-label', (t ? 'Truffle letter ' : 'Letter ') + L); b.addEventListener('click', () => sType(L)); f.appendChild(b); };
+    mk(center, 92, 88, true); sOuter.forEach((L, i) => mk(L, pos[i][0], pos[i][1], false));
+  }
+  function sRenderWord(){
+    const w = $('#sWord'); w.innerHTML = '';
+    [...sWord].forEach(c => { const s = document.createElement('span'); s.textContent = c; if (c === center) s.className = 't'; w.appendChild(s); });
+    const car = document.createElement('span'); car.className = 'caret'; w.appendChild(car);
+  }
+  function sType(L){ if (sWord.length < 15) { sWord += L; sRenderWord(); } }
+  function sEnter(){
+    const w = sWord; sWord = ''; sRenderWord();
+    if (!w) return;
+    if (w.length < 4) return toast($('#sToast'), 'Too short, even for a piglet.');
+    if (![...w].every(c => c === center || outer.includes(c))) return toast($('#sToast'), 'That letter isn’t in the trough.');
+    if (!w.includes(center)) return toast($('#sToast'), 'Missing the truffle.');
+    if (sFound.includes(w)) return toast($('#sToast'), 'Already snuffled.');
+    if (!dict.has(w)) return toast($('#sToast'), 'Not in the trough.');
+    sFound.push(w); const p = score(w); sPts += p;
+    toast($('#sToast'), new Set(w).size === 7 ? `Whole Hog! +${p}` : (p === 1 ? 'Good. +1' : `Splendid. +${p}`));
+    const frac = sPts / maxScore; let r = ranks[0][0]; ranks.forEach(([n, t]) => { if (frac >= t) r = n; });
+    $('#sRank').textContent = r; $('#sBar').style.width = Math.min(100, frac / .8 * 100) + '%';
+    $('#sScore').textContent = sPts + ' pts';
+    const f = $('#sFound'); f.textContent = `You have found ${sFound.length} word${sFound.length === 1 ? '' : 's'}: `;
+    sFound.slice().sort().forEach((x, i) => { const s = document.createElement('span'); s.textContent = x.toLowerCase() + (i < sFound.length - 1 ? ', ' : ''); f.appendChild(s); });
+  }
+  $('#sDel').addEventListener('click', () => { sWord = sWord.slice(0, -1); sRenderWord(); });
+  $('#sShuf').addEventListener('click', () => { shuffle(sOuter); sRenderFlower(); });
+  $('#sEnter').addEventListener('click', sEnter);
+  document.addEventListener('keydown', e => {
+    if (current !== 'snuffalo' || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.target.closest('input')) return;
+    if (/^[a-z]$/i.test(e.key)) { sType(e.key.toUpperCase()); e.preventDefault(); }
+    else if (e.key === 'Backspace') { sWord = sWord.slice(0, -1); sRenderWord(); e.preventDefault(); }
+    else if (e.key === 'Enter' && !e.target.closest('button')) { sEnter(); e.preventDefault(); }
+    else if (e.key === ' ' && !e.target.closest('button')) { shuffle(sOuter); sRenderFlower(); e.preventDefault(); }
+  });
+  sRenderFlower(); sRenderWord();
+})();
+</script>
