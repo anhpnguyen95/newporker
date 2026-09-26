@@ -2,22 +2,26 @@
 <meta name="description" content="Design mockup for The New Porker, a satirical magazine about animals doing wild things.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Libre+Franklin:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=IBM+Plex+Mono:wght@400;600&family=Libre+Franklin:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
 <style>
 :root{
   --paper:#FCFBF8; --ink:#1B1816; --ink-soft:#6A5E57; --rule:#E3DDD6;
   --snout:#C8435F; --snout-wash:#FBE5EA; --tile:#FFFFFF;
+  --wire:#EEF1EC; --wire-ink:#2F5D47;
   --kibble:#F2D66B; --tuna:#9CCB86; --catnip:#8DB6E0; --hairball:#B99AD6; --band-ink:#1B1816;
   --display:"Gloock", "Georgia", serif;
   --body:"Newsreader", "Georgia", serif;
   --ui:"Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     color-scheme:dark;
     --paper:#17141A; --ink:#EDE7E3; --ink-soft:#A89C96; --rule:#332D34;
     --snout:#F08CA2; --snout-wash:#33202A; --tile:#221E25;
-    --kibble:#C9A93A; --tuna:#6E9C5B; --catnip:#5A86B3; --hairball:#8C6CB0; --band-ink:#120F13;
+    --wire:#1E2320; --wire-ink:#8CC4A6;
+    --wire:#1E2320; --wire-ink:#8CC4A6;
+  --kibble:#C9A93A; --tuna:#6E9C5B; --catnip:#5A86B3; --hairball:#8C6CB0; --band-ink:#120F13;
   }
 }
 :root[data-theme="dark"]{
@@ -70,12 +74,47 @@ nav.primary a[aria-current]{color:var(--snout)}
 .card .dek{font-size:16px}
 .card .art svg{width:60%}
 
+
+/* the wire (real news) */
+.wire{padding:32px 0 36px;border-bottom:1px solid var(--rule)}
+.wire-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 24px;flex-wrap:wrap;margin-bottom:20px}
+.wire-head h2{font-size:38px;margin-top:4px}
+.wire-head p{font-size:15px;color:var(--ink-soft);max-width:46ch}
+.wire-head .rubric{color:var(--wire-ink)}
+.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.wcard{background:var(--wire);border:1px solid var(--rule);padding:18px;display:flex;flex-direction:column;gap:10px}
+.wtop{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--wire-ink)}
+.stamp{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--wire-ink);border:1.5px solid currentColor;padding:2px 6px;transform:rotate(-2deg);display:inline-block}
+.stamp.satire{font-family:var(--ui);font-weight:700;color:var(--snout);transform:none;border-radius:2px}
+.wcard h3{font-family:var(--mono);font-size:16.5px;font-weight:600;line-height:1.35}
+.wcard .sum{font-size:16px;line-height:1.5}
+.take{border-top:1px dashed var(--rule);padding-top:10px;font-size:16px;font-style:italic}
+.take b{display:block;font-family:var(--ui);font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--snout);margin-bottom:2px}
+.wlink{font-family:var(--ui);font-size:13px;font-weight:600;color:var(--wire-ink);margin-top:auto;text-decoration:underline;text-underline-offset:3px}
+.wire-foot{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:14px}
+
+/* real or porker */
+.rp-progress{display:flex;gap:6px;justify-content:center;margin-bottom:16px}
+.rp-progress i{width:22px;height:22px;border:1.5px solid var(--rule);display:grid;place-items:center;font-style:normal;font-family:var(--ui);font-size:12px;font-weight:700}
+.rp-progress i.ok{background:var(--wire-ink);border-color:var(--wire-ink);color:var(--paper)}
+.rp-progress i.no{background:var(--snout);border-color:var(--snout);color:var(--paper)}
+.rp-card{border:1px solid var(--ink);padding:24px 20px;min-height:170px;display:flex;flex-direction:column;justify-content:center;gap:10px;text-align:center}
+.rp-card h4{font-family:var(--body);font-weight:500;font-size:23px;line-height:1.25;margin:0;text-wrap:balance}
+.rp-card.is-real{background:var(--wire);border-color:var(--wire-ink);text-align:left}
+.rp-card.is-real h4{font-family:var(--mono);font-size:18px;font-weight:600}
+.rp-card.is-fake{background:var(--snout-wash);border-color:var(--snout);text-align:left}
+.rp-verdict{font-family:var(--ui);font-size:14px;font-weight:600}
+.rp-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.rp-btns .btn{font-size:16px;padding:14px}
+#rpReal{border-color:var(--wire-ink);color:var(--wire-ink)}
+#rpFake{border-color:var(--snout);color:var(--snout)}
+
 /* games strip */
 .games{background:var(--snout-wash);margin:12px 0 0;padding:32px 0 40px;border-top:3px solid var(--snout)}
 .games-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
 .games-head h2{font-size:40px}
 .games-head p{font-style:italic;color:var(--ink-soft)}
-.gcards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.gcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .gcard{background:var(--paper);border:1px solid var(--rule);padding:16px;display:flex;flex-direction:column;gap:6px;text-align:left;font:inherit;color:inherit;cursor:pointer}
 .gcard:hover{border-color:var(--ink)}
 .gcard[aria-pressed="true"]{border-color:var(--snout);box-shadow:0 0 0 1px var(--snout)}
@@ -105,7 +144,7 @@ button.tile[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 .toast span{display:inline-block;background:var(--ink);color:var(--paper);font-family:var(--ui);font-size:13px;padding:4px 12px;border-radius:999px}
 
 /* catagories */
-.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;transition:transform .5s ease-in, opacity .5s}
+.cgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;transition:transform .5s ease-in, opacity .5s}
 .cgrid button.tile{font-size:clamp(11px,2.6vw,14px);aspect-ratio:1.25;padding:4px;overflow-wrap:anywhere}
 .cgrid.knocked{transform:translateX(120%) rotate(12deg);opacity:0}
 .band{grid-column:1/-1;border-radius:6px;padding:10px;text-align:center;color:var(--band-ink);font-family:var(--ui)}
@@ -157,13 +196,14 @@ footer .logo{font-family:var(--display);font-size:30px}
 .paywall p{font-size:15px;color:var(--ink-soft)}
 
 @media (max-width:960px){
-  .gcards{grid-template-columns:repeat(3,1fr)}
-  .stage{grid-template-columns:1fr}
+  .wgrid{grid-template-columns:repeat(2,1fr)}
+  .stage{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:760px){
   .lead,.lower,footer{grid-template-columns:1fr}
   .grid{grid-template-columns:1fr}
   .gcards{grid-template-columns:repeat(2,1fr)}
+  .wgrid{grid-template-columns:1fr}
   .utility .hide-sm{display:none}
 }
 @media (prefers-reduced-motion:reduce){
@@ -172,7 +212,7 @@ footer .logo{font-family:var(--display);font-size:30px}
 </style>
 
 <div class="wrap">
-  <div class="proto">Design mockup · The New Porker is satire and is not affiliated with The New Yorker or Condé Nast</div>
+  <div class="proto">Design mockup · The New Porker is satire, except The Wire (real news, linked to its source) · Not affiliated with The New Yorker or Condé Nast</div>
 
   <div class="utility">
     <span class="hide-sm">Saturday, September 26, 2026 · Issue No. 4,112½</span>
@@ -185,6 +225,7 @@ footer .logo{font-family:var(--display);font-size:30px}
     <p class="tagline" id="tagline">All the news that’s fit to snout.</p>
     <nav class="primary" aria-label="Sections">
       <a href="#news" aria-current="page">News</a>
+      <a href="#wire">The Wire</a>
       <a href="#news">Snouts &amp; Murmurs</a>
       <a href="#talk">Talk of the Farm</a>
       <a href="#news">The Critics</a>
@@ -270,6 +311,61 @@ footer .logo{font-family:var(--display);font-size:30px}
         <p class="meta">By Mittens (as told to nobody) · 5 min read</p>
       </article>
     </section>
+
+  <section class="wire" id="wire" aria-labelledby="wire-title">
+    <div class="wire-head">
+      <div>
+        <span class="rubric">The Wire · Real news</span>
+        <h2 id="wire-title">It Actually Happened</h2>
+      </div>
+      <p>Everything in this section was reported by real news outlets. We link to the original, write our own summary, and add one joke about the animal.</p>
+    </div>
+    <div class="wgrid">
+      <article class="wcard">
+        <div class="wtop"><span class="stamp">Reported</span><span>UPI · Sept. 24, 2026</span></div>
+        <h3>Emu escapes from Japanese zoo, leads police on 2-hour chase</h3>
+        <p class="sum"><span class="meta" style="color:var(--wire-ink)">Moriyama, Japan ·</span> A young emu walked out of a mobile zoo through a door that is usually shut and spent about two hours running through a residential neighborhood. A passerby called it in as an ostrich. Staff caught it at an apartment complex; no one was hurt.</p>
+        <p class="take"><b>Porker Take</b>The emu maintains he was not escaping. He was “seeing Moriyama.”</p>
+        <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/24/japan-escaped-emu-zoo-Moriyama/2161790267116/" target="_blank" rel="noopener">Read it at UPI ↗</a>
+      </article>
+      <article class="wcard">
+        <div class="wtop"><span class="stamp">Reported</span><span>UPI · Sept. 22, 2026</span></div>
+        <h3>Ball python rescued from front grille of New Jersey car</h3>
+        <p class="sum"><span class="meta" style="color:var(--wire-ink)">Franklin Township, N.J. ·</span> A driver found a 3-foot ball python wedged in her car’s front grille after a wheel alignment. Officers took off the bumper to free it, which took about 20 minutes. The snake was unharmed and went to the local shelter.</p>
+        <p class="take"><b>Porker Take</b>The python says it was only there to make sure the alignment was done right.</p>
+        <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/22/ball-python-car-Franklin-Township-New-Jersey/8681790094020" target="_blank" rel="noopener">Read it at UPI ↗</a>
+      </article>
+      <article class="wcard">
+        <div class="wtop"><span class="stamp">Reported</span><span>UPI · Sept. 11, 2026</span></div>
+        <h3>“Overwhelmed” squirrel rescued from stands at Ohio State game</h3>
+        <p class="sum"><span class="meta" style="color:var(--wire-ink)">Columbus, Ohio ·</span> Police were called into the stands during Ohio State’s game against Ball State to retrieve a squirrel that had wandered in and, in their words, become overwhelmed.</p>
+        <p class="take"><b>Porker Take</b>The squirrel has asked for a quieter seat, and for the band to “take it down a notch.”</p>
+        <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/11/Perry-Township-Ohio-State-squirrel/9691789147583/" target="_blank" rel="noopener">Read it at UPI ↗</a>
+      </article>
+      <article class="wcard">
+        <div class="wtop"><span class="stamp">Reported</span><span>UPI · Sept. 3, 2026</span></div>
+        <h3>One of two loose pigs captured in Detroit neighborhood</h3>
+        <p class="sum"><span class="meta" style="color:var(--wire-ink)">Detroit ·</span> Two pigs showed up on a Detroit street. Animal control chased one for more than an hour, jumping and swerving, before cornering him in a bush. The second pig remained at large.</p>
+        <p class="take"><b>Porker Take</b>The New Porker has reached the second pig, who is not ready to talk.</p>
+        <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/03/detroit-pigs-one-captured/1901788457595/" target="_blank" rel="noopener">Read it at UPI ↗</a>
+      </article>
+      <article class="wcard">
+        <div class="wtop"><span class="stamp">Reported</span><span>UPI · Sept. 3, 2026</span></div>
+        <h3>Kitten stows away in engine compartment for nearly 80-mile drive</h3>
+        <p class="sum"><span class="meta" style="color:var(--wire-ink)">Kerrville, Texas ·</span> A newborn kitten rode inside a vehicle’s engine compartment from Rocksprings to Kerrville, Texas, a trip of about 76 miles, before it was found and rescued.</p>
+        <p class="take"><b>Porker Take</b>The kitten describes the trip as “loud, warm, and 76 miles longer than planned.”</p>
+        <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/03/kitten-engine-bay-Kerrville-Texas/1341788461352/" target="_blank" rel="noopener">Read it at UPI ↗</a>
+      </article>
+      <article class="wcard">
+        <div class="wtop"><span class="stamp">Reported</span><span>UPI · Sept. 17, 2026</span></div>
+        <h3>Venomous sea snake makes rare appearance at California beach</h3>
+        <p class="sum"><span class="meta" style="color:var(--wire-ink)">Crystal Cove, Calif. ·</span> A beachgoer filmed a highly venomous yellow-bellied sea snake on the sand at Crystal Cove in Orange County, a rare sighting that far north.</p>
+        <p class="take"><b>Porker Take</b>The snake would like it known that it was there first, and that it does not share towels.</p>
+        <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/17/yellow-bellied-sea-snake-Chrystal-Cove-California/8871789660407/" target="_blank" rel="noopener">Read it at UPI ↗</a>
+      </article>
+    </div>
+    <p class="wire-foot">Mockup snapshot: stories found Sept. 26, 2026. On the live site this section refreshes several times a day from news feeds, after an editor approves each item.</p>
+  </section>
   </main>
 
   <section class="games" id="games" aria-labelledby="games-title">
@@ -294,6 +390,12 @@ footer .logo{font-family:var(--display);font-size:30px}
           <span class="pitch">Root out words around the truffle letter. Find the Whole Hog.</span>
           <span class="parody">after Shuffalo</span>
           <span class="pill hot">Playable below</span>
+        </button>
+        <button class="gcard" type="button" data-game="realorporker" aria-pressed="false">
+          <span class="name">Real or Porker?</span>
+          <span class="pitch">Eight headlines. Some happened. Some we made up. Can you tell?</span>
+          <span class="parody">uses real stories from The Wire</span>
+          <span class="pill hot">New · Playable below</span>
         </button>
         <div class="gcard" aria-disabled="true">
           <span class="name">Name Droppings</span>
@@ -350,6 +452,21 @@ footer .logo{font-family:var(--display);font-size:30px}
           <div class="found" id="sFound">You have found 0 words.</div>
         </div>
 
+        <!-- Real or Porker -->
+        <div class="board" id="realorporker" hidden>
+          <div class="board-head">
+            <h3>Real or Porker?</h3>
+            <span class="meta">No. 1 · Sept. 26</span>
+          </div>
+          <div class="rp-progress" id="rpProg" aria-label="Progress"></div>
+          <div id="rpCard" class="rp-card" aria-live="polite"></div>
+          <div class="rp-btns" id="rpBtns">
+            <button class="btn" type="button" id="rpReal">Real</button>
+            <button class="btn" type="button" id="rpFake">Porker</button>
+          </div>
+          <div class="btnrow"><button class="btn primary" type="button" id="rpNext" hidden>Next headline</button></div>
+        </div>
+
         <div class="notes" id="notes"></div>
       </div>
     </div>
@@ -402,7 +519,7 @@ footer .logo{font-family:var(--display);font-size:30px}
       </form>
       <p class="nl-msg" id="nlMsg" aria-live="polite"></p>
     </div>
-    <p class="disclaimer">The New Porker is a work of satire. It is not affiliated with, endorsed by, or connected to The New Yorker or Condé Nast. All stories are fiction. All animals are fictional, except the ones who are just very good. No raccoons were harmed in the making of this issue, though several were mildly inconvenienced.</p>
+    <p class="disclaimer">The New Porker is a work of satire. It is not affiliated with, endorsed by, or connected to The New Yorker or Condé Nast. All stories are fiction except items in The Wire, which are real news reported by the outlets we link to. All other animals are fictional, except the ones who are just very good. No raccoons were harmed in the making of this issue, though several were mildly inconvenienced.</p>
   </footer>
 </div>
 
@@ -453,7 +570,12 @@ footer .logo{font-family:var(--display);font-size:30px}
       <ul><li>Four-letter words score 1; longer words score 1 per letter.</li>
       <li>Use all seven letters for a <b>Whole Hog</b> (+7).</li>
       <li>Ranks: Piglet, Shoat, Rooter, Truffler, Mudlark, Prize Hog, Hog Wild.</li>
-      <li>Type on your keyboard, or tap the tiles. Space shuffles.</li></ul>`
+      <li>Type on your keyboard, or tap the tiles. Space shuffles.</li></ul>`,
+    realorporker: `<span class="rubric">How it works</span><h3>Real or Porker?</h3>
+      <p>Each headline either ran in a real news outlet or was written by us. Pick one. The card then shows you the truth, with a link to the source if it was real.</p>
+      <ul><li>Real headlines come from The Wire and are never reworded.</li>
+      <li>Keyboard: <b>R</b> for Real, <b>P</b> for Porker.</li>
+      <li>Ranks: Gullible Gosling, Skeptical Stoat, Fact-Checking Fox.</li></ul>`
   };
   let current = 'catagories';
   function show(game){
@@ -461,6 +583,7 @@ footer .logo{font-family:var(--display);font-size:30px}
     document.querySelectorAll('.gcard[data-game]').forEach(b => b.setAttribute('aria-pressed', b.dataset.game === game));
     $('#catagories').hidden = game !== 'catagories';
     $('#snuffalo').hidden = game !== 'snuffalo';
+    $('#realorporker').hidden = game !== 'realorporker';
     $('#notes').innerHTML = notes[game];
   }
   document.querySelectorAll('.gcard[data-game]').forEach(b => b.addEventListener('click', () => show(b.dataset.game)));
@@ -573,5 +696,62 @@ footer .logo{font-family:var(--display);font-size:30px}
     else if (e.key === ' ' && !e.target.closest('button')) { shuffle(sOuter); sRenderFlower(); e.preventDefault(); }
   });
   sRenderFlower(); sRenderWord();
+
+  // ---------- Real or Porker ----------
+  const rpItems = [
+    {h:"Emu escapes from Japanese zoo, leads police on 2-hour chase", real:true, src:"UPI, Sept. 24, 2026", url:"https://www.upi.com/Odd_News/2026/09/24/japan-escaped-emu-zoo-Moriyama/2161790267116/"},
+    {h:"Octopus admitted to Yale early decision, plans to major in escaping", real:false},
+    {h:"Ball python rescued from front grille of New Jersey car", real:true, src:"UPI, Sept. 22, 2026", url:"https://www.upi.com/Odd_News/2026/09/22/ball-python-car-Franklin-Township-New-Jersey/8681790094020"},
+    {h:"Goose files 400th noise complaint against himself", real:false},
+    {h:"“Overwhelmed” squirrel rescued from stands at Ohio State game", real:true, src:"UPI, Sept. 11, 2026", url:"https://www.upi.com/Odd_News/2026/09/11/Perry-Township-Ohio-State-squirrel/9691789147583/"},
+    {h:"Pigeon arrested for impersonating a dove at wedding", real:false},
+    {h:"Montana woman uses bear spray to ward off charging moose", real:true, src:"UPI, Sept. 2, 2026", url:"https://www.upi.com/Odd_News/2026/09/02/Big-Sky-Montana-moose-dogs-bear-spray/2081788370442/"},
+    {h:"Crows launch venture fund focused exclusively on shiny things", real:false}
+  ];
+  const rpOrder = [0,1,2,3,4,5,6,7].sort((a,b) => ((a*5+3)%8) - ((b*5+3)%8));
+  let rpI = 0, rpRes = [], rpAnswered = false;
+  function rpRender(){
+    const prog = $('#rpProg'); prog.innerHTML = '';
+    rpOrder.forEach((_, i) => { const d = document.createElement('i'); if (rpRes[i] !== undefined) { d.className = rpRes[i] ? 'ok' : 'no'; d.textContent = rpRes[i] ? '✓' : '✗'; } prog.appendChild(d); });
+    const card = $('#rpCard'); card.className = 'rp-card'; card.innerHTML = '';
+    if (rpI >= rpOrder.length) {
+      const n = rpRes.filter(Boolean).length;
+      const rank = n >= 7 ? 'Fact-Checking Fox' : n >= 4 ? 'Skeptical Stoat' : 'Gullible Gosling';
+      card.innerHTML = `<span class="rubric">Final score</span><h4>${n} of 8 · ${rank}</h4><p class="meta">Real or Porker? 9/26 · ${rpRes.map(r => r ? '✅' : '❌').join('')}</p>`;
+      $('#rpBtns').hidden = true; $('#rpNext').hidden = false; $('#rpNext').textContent = 'Play again'; return;
+    }
+    const it = rpItems[rpOrder[rpI]];
+    const h = document.createElement('h4'); h.textContent = it.h;
+    if (!rpAnswered) {
+      const l = document.createElement('span'); l.className = 'meta'; l.textContent = `Headline ${rpI + 1} of 8`;
+      card.append(l, h); $('#rpBtns').hidden = false; $('#rpNext').hidden = true; return;
+    }
+    const ok = rpRes[rpI];
+    card.classList.add(it.real ? 'is-real' : 'is-fake');
+    const top = document.createElement('div'); top.className = 'wtop';
+    top.innerHTML = it.real ? '<span class="stamp">Reported</span><span></span>' : '<span class="stamp satire">Satire</span><span></span>';
+    top.lastChild.textContent = it.real ? it.src : 'The New Porker';
+    const v = document.createElement('p'); v.className = 'rp-verdict';
+    v.textContent = (ok ? '✓ Correct. ' : '✗ Nope. ') + (it.real ? 'It happened. We’re as upset as you are.' : 'We made that one up. For now.');
+    card.append(top, h, v);
+    if (it.real) { const a = document.createElement('a'); a.className = 'wlink'; a.href = it.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Read it at UPI ↗'; card.appendChild(a); }
+    $('#rpBtns').hidden = true; $('#rpNext').hidden = false; $('#rpNext').textContent = rpI === 7 ? 'See score' : 'Next headline';
+  }
+  function rpAnswer(guessReal){
+    if (rpAnswered || rpI >= rpOrder.length) return;
+    rpRes[rpI] = rpItems[rpOrder[rpI]].real === guessReal; rpAnswered = true; rpRender();
+  }
+  $('#rpReal').addEventListener('click', () => rpAnswer(true));
+  $('#rpFake').addEventListener('click', () => rpAnswer(false));
+  $('#rpNext').addEventListener('click', () => {
+    if (rpI >= rpOrder.length) { rpI = 0; rpRes = []; } else rpI++;
+    rpAnswered = false; rpRender();
+  });
+  document.addEventListener('keydown', e => {
+    if (current !== 'realorporker' || e.target.closest('input')) return;
+    if (e.key === 'r' || e.key === 'R') rpAnswer(true);
+    if (e.key === 'p' || e.key === 'P') rpAnswer(false);
+  });
+  rpRender();
 })();
 </script>
