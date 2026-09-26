@@ -20,7 +20,6 @@
     --paper:#17141A; --ink:#EDE7E3; --ink-soft:#A89C96; --rule:#332D34;
     --snout:#F08CA2; --snout-wash:#33202A; --tile:#221E25;
     --wire:#1E2320; --wire-ink:#8CC4A6;
-    --wire:#1E2320; --wire-ink:#8CC4A6;
   --kibble:#C9A93A; --tuna:#6E9C5B; --catnip:#5A86B3; --hairball:#8C6CB0; --band-ink:#120F13;
   }
 }
@@ -28,6 +27,7 @@
   color-scheme:dark;
   --paper:#17141A; --ink:#EDE7E3; --ink-soft:#A89C96; --rule:#332D34;
   --snout:#F08CA2; --snout-wash:#33202A; --tile:#221E25;
+  --wire:#1E2320; --wire-ink:#8CC4A6;
   --kibble:#C9A93A; --tuna:#6E9C5B; --catnip:#5A86B3; --hairball:#8C6CB0; --band-ink:#120F13;
 }
 *{box-sizing:border-box}
@@ -62,9 +62,9 @@ nav.primary a[aria-current]{color:var(--snout)}
 .lead{display:grid;grid-template-columns:7fr 5fr;gap:36px;align-items:center;padding:36px 0;border-bottom:1px solid var(--rule)}
 .art{background:var(--snout-wash);aspect-ratio:3/2;max-width:100%;display:grid;place-items:center;overflow:hidden}
 .art svg{width:78%;height:auto}
-.lead h2{font-size:clamp(32px,4.4vw,54px);margin:10px 0 14px}
+.lead h2{font-size:clamp(32px,4.4vw,52px);margin:10px 0 12px}
 .dek{font-style:italic;font-size:20px;color:var(--ink-soft)}
-.byline{margin-top:16px}
+.lead .dek{margin-bottom:14px}
 .credit{font-family:var(--ui);font-size:11px;color:var(--ink-soft);margin-top:6px}
 
 /* grid */
@@ -76,22 +76,14 @@ nav.primary a[aria-current]{color:var(--snout)}
 
 
 /* the wire (real news) */
-.wire{padding:32px 0 36px;border-bottom:1px solid var(--rule)}
-.wire-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 24px;flex-wrap:wrap;margin-bottom:20px}
-.wire-head h2{font-size:38px;margin-top:4px}
-.wire-head p{font-size:15px;color:var(--ink-soft);max-width:46ch}
-.wire-head .rubric{color:var(--wire-ink)}
-.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.wcard{background:var(--wire);border:1px solid var(--rule);padding:18px;display:flex;flex-direction:column;gap:10px}
 .wtop{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--wire-ink)}
 .stamp{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--wire-ink);border:1.5px solid currentColor;padding:2px 6px;transform:rotate(-2deg);display:inline-block}
 .stamp.satire{font-family:var(--ui);font-weight:700;color:var(--snout);transform:none;border-radius:2px}
-.wcard h3{font-family:var(--mono);font-size:16.5px;font-weight:600;line-height:1.35}
-.wcard .sum{font-size:16px;line-height:1.5}
+.lead-sum{font-size:17px;margin-top:12px}
+.card .wtop,.lead .wtop{margin-top:2px}
 .take{border-top:1px dashed var(--rule);padding-top:10px;font-size:16px;font-style:italic}
 .take b{display:block;font-family:var(--ui);font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--snout);margin-bottom:2px}
 .wlink{font-family:var(--ui);font-size:13px;font-weight:600;color:var(--wire-ink);margin-top:auto;text-decoration:underline;text-underline-offset:3px}
-.wire-foot{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:14px}
 
 /* real or porker */
 .rp-progress{display:flex;gap:6px;justify-content:center;margin-bottom:16px}
@@ -177,10 +169,13 @@ button.tile[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 .cartoon figcaption{font-style:italic;text-align:center;margin-top:12px;font-size:18px}
 .talk h2{font-size:34px;margin:6px 0 16px}
 .talk ol{list-style:none;padding:0;margin:0;display:grid}
-.talk li{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--rule)}
+.talk li{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--rule)}
 .talk li .meta{padding-top:5px;font-size:11px;overflow-wrap:anywhere}
 .talk li h3{font-size:21px}
 .talk li p{font-size:16px;color:var(--ink-soft);margin-top:4px}
+.talk li .wlink{font-size:12px;margin-left:4px}
+.lead .take{margin-top:12px}
+.lead .wlink{display:inline-block;margin-top:12px}
 
 footer{padding:32px 0 0;display:grid;grid-template-columns:2fr 3fr;gap:36px}
 footer .logo{font-family:var(--display);font-size:30px}
@@ -196,14 +191,12 @@ footer .logo{font-family:var(--display);font-size:30px}
 .paywall p{font-size:15px;color:var(--ink-soft)}
 
 @media (max-width:960px){
-  .wgrid{grid-template-columns:repeat(2,1fr)}
   .stage{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:760px){
   .lead,.lower,footer{grid-template-columns:1fr}
   .grid{grid-template-columns:1fr}
   .gcards{grid-template-columns:repeat(2,1fr)}
-  .wgrid{grid-template-columns:1fr}
   .utility .hide-sm{display:none}
 }
 @media (prefers-reduced-motion:reduce){
@@ -212,7 +205,7 @@ footer .logo{font-family:var(--display);font-size:30px}
 </style>
 
 <div class="wrap">
-  <div class="proto">Design mockup · The New Porker is satire, except The Wire (real news, linked to its source) · Not affiliated with The New Yorker or Condé Nast</div>
+  <div class="proto">Design mockup · Every story is real news, linked to its source · Not affiliated with The New Yorker or Condé Nast</div>
 
   <div class="utility">
     <span class="hide-sm">Saturday, September 26, 2026 · Issue No. 4,112½</span>
@@ -224,148 +217,185 @@ footer .logo{font-family:var(--display);font-size:30px}
     <h1>The New P<span class="snout" aria-hidden="true"></span>rker</h1>
     <p class="tagline" id="tagline">All the news that’s fit to snout.</p>
     <nav class="primary" aria-label="Sections">
-      <a href="#news" aria-current="page">News</a>
-      <a href="#wire">The Wire</a>
-      <a href="#news">Snouts &amp; Murmurs</a>
-      <a href="#talk">Talk of the Farm</a>
-      <a href="#news">The Critics</a>
+      <a href="#news" aria-current="page">Latest</a>
+      <a href="#news">Fugitives</a>
+      <a href="#news">Stowaways</a>
+      <a href="#news">Stuck</a>
+      <a href="#talk">Encounters</a>
       <a href="#cartoon">Cartoons</a>
       <a href="#games">Games</a>
-      <a href="#news">The Magazine</a>
     </nav>
   </header>
 
   <main id="news">
     <article class="lead">
-      <div class="art" role="img" aria-label="Illustration: a raccoon holding a picket sign that reads LIDS FOR ALL">
-        <svg viewBox="0 0 300 200" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="178" y="30" width="96" height="58" fill="var(--paper)"/>
-          <text x="226" y="55" text-anchor="middle" font-family="Libre Franklin, Arial, sans-serif" font-weight="700" font-size="14" fill="currentColor" stroke="none">LIDS</text>
-          <text x="226" y="75" text-anchor="middle" font-family="Libre Franklin, Arial, sans-serif" font-weight="700" font-size="14" fill="currentColor" stroke="none">FOR ALL</text>
-          <line x1="226" y1="88" x2="226" y2="170"/>
-          <path d="M60 190 C60 140 80 118 118 118 C156 118 176 140 176 190" fill="var(--paper)"/>
-          <path d="M72 70 L62 36 L92 56" fill="var(--paper)"/>
-          <path d="M164 70 L174 36 L144 56" fill="var(--paper)"/>
-          <ellipse cx="118" cy="84" rx="54" ry="44" fill="var(--paper)"/>
-          <path d="M72 80 Q92 64 112 82 Q118 88 124 82 Q144 64 164 80 Q150 100 124 94 Q118 100 112 94 Q86 100 72 80Z" fill="currentColor"/>
-          <circle cx="98" cy="82" r="4" fill="var(--paper)" stroke="none"/>
-          <circle cx="138" cy="82" r="4" fill="var(--paper)" stroke="none"/>
-          <ellipse cx="118" cy="110" rx="7" ry="5" fill="currentColor"/>
-          <path d="M170 150 Q200 150 222 150" />
-          <circle cx="222" cy="150" r="8" fill="var(--paper)"/>
-          <path d="M176 180 q20 6 30 -6 q10 12 24 4" />
+      <div class="art" role="img" aria-label="Illustration: an emu sprinting past an apartment building, trailed by speed lines">
+        <svg viewBox="0 0 300 200" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M10 182 H290"/>
+  <rect x="204" y="34" width="78" height="148" fill="var(--paper)"/>
+  <path d="M218 52 h12 M252 52 h12 M218 76 h12 M252 76 h12 M218 100 h12 M252 100 h12 M218 124 h12 M252 124 h12"/>
+  <rect x="234" y="150" width="18" height="32" fill="var(--paper)"/>
+  <path d="M24 84 h34 M14 104 h40 M26 124 h30"/>
+  <path d="M104 130 L92 156 L70 176 M70 176 l-10 2 M70 176 l-4 6"/>
+  <path d="M122 130 L140 156 L132 180 M132 180 l10 1 M132 180 l2 -1"/>
+  <path d="M66 104 C66 78 92 66 118 68 C140 70 156 84 156 102 C156 124 132 136 108 134 C84 132 66 124 66 104Z" fill="var(--paper)"/>
+  <path d="M80 92 l8 6 M96 84 l6 8 M112 80 l4 9 M128 84 l2 9 M90 110 l8 4 M110 110 l6 6 M130 104 l4 7"/>
+  <path d="M146 86 C156 70 158 54 162 42" stroke-width="7"/>
+  <path d="M146 86 C156 70 158 54 162 42" stroke="var(--paper)" stroke-width="2"/>
+  <circle cx="166" cy="36" r="10" fill="var(--paper)"/>
+  <path d="M175 34 L192 38 L175 42" fill="var(--paper)"/>
+  <circle cx="168" cy="33" r="2.5" fill="currentColor" stroke="none"/>
         </svg>
       </div>
       <div>
-        <span class="rubric">The Burrow-witz Report</span>
-        <h2><a href="#news">Raccoons Win Right to Collective Bargaining Over Municipal Bins</a></h2>
-        <p class="dek">After a three-week strike, the trash pandas have secured lid access, dental, and a firm commitment to “tuna Thursdays.”</p>
-        <p class="meta byline">By Hortense Quill-Hogg · 4 min read</p>
-        <p class="credit">Illustration by Barnaby Stoat</p>
+        <span class="rubric">Fugitives · Moriyama, Japan</span>
+        <h2><a href="https://www.upi.com/Odd_News/2026/09/24/japan-escaped-emu-zoo-Moriyama/2161790267116/" target="_blank" rel="noopener">Emu Escapes From Japanese Zoo, Leads Police on Two-Hour Chase</a></h2>
+        <p class="dek">A passerby called it in as an ostrich. It was not an ostrich.</p>
+        <div class="wtop"><span class="stamp">Reported</span><span>UPI · Sept. 24, 2026</span></div>
+        <p class="sum lead-sum">A young emu walked out of a mobile zoo through a door that is usually kept shut and spent about two hours running through a residential neighborhood before staff caught it at an apartment complex. No one was hurt, and the zoo says it will review how it keeps its emus.</p>
+        <p class="take"><b>Porker Take</b>The emu maintains he was not escaping. He was “seeing Moriyama.”</p>
+        <p style="display:flex;gap:16px;align-items:baseline;flex-wrap:wrap"><a class="wlink" href="https://www.upi.com/Odd_News/2026/09/24/japan-escaped-emu-zoo-Moriyama/2161790267116/" target="_blank" rel="noopener">Read it at UPI ↗</a><span class="credit">Illustration by Barnaby Stoat</span></p>
       </div>
     </article>
 
     <section class="grid" aria-label="More stories">
       <article class="card">
-        <div class="art" role="img" aria-label="Illustration: an octopus in a graduation cap">
-          <svg viewBox="0 0 200 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M60 30 L100 14 L140 30 L100 46Z" fill="currentColor"/>
-            <path d="M136 30 v18"/>
-            <path d="M66 74 C66 40 134 40 134 74 C134 90 120 96 100 96 C80 96 66 90 66 74Z" fill="var(--paper)"/>
-            <circle cx="88" cy="70" r="4" fill="currentColor"/><circle cx="112" cy="70" r="4" fill="currentColor"/>
-            <path d="M72 92 q-10 20 -26 22 M84 96 q-4 22 -16 30 M100 96 v32 M116 96 q4 22 16 30 M128 92 q10 20 26 22"/>
-          </svg>
-        </div>
-        <span class="rubric">Annals of Instinct</span>
-        <h3><a href="#news">Octopus Admitted to Yale Early Decision, Plans to Major in Escaping</a></h3>
-        <p class="dek">Her essay was about a jar. The committee called it “unscrewable.”</p>
-        <p class="meta">By Percival Mudd · 12 min read</p>
-      </article>
-      <article class="card">
-        <div class="art" role="img" aria-label="Illustration: a goose holding a complaint form">
-          <svg viewBox="0 0 200 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M70 120 C50 100 60 70 90 70 C104 70 108 60 106 40 C104 22 124 18 130 30 L150 34 L132 42 C128 60 126 76 130 90 C136 112 110 126 70 120Z" fill="var(--paper)"/>
-            <circle cx="122" cy="30" r="3" fill="currentColor"/>
-            <rect x="140" y="72" width="36" height="46" fill="var(--paper)"/>
-            <path d="M148 84 h20 M148 94 h20 M148 104 h12"/>
-          </svg>
-        </div>
-        <span class="rubric">Talk of the Farm</span>
-        <h3><a href="#news">Local Goose Files 400th Noise Complaint Against Himself</a></h3>
-        <p class="dek">“Someone around here is honking at all hours,” he said, honking.</p>
-        <p class="meta">By Imogen Fetlock · 3 min read</p>
-      </article>
-      <article class="card">
-        <div class="art" role="img" aria-label="Illustration: a cat sitting inside a cardboard box">
-          <svg viewBox="0 0 200 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M74 64 L80 34 L96 52 L108 52 L124 34 L128 64" fill="var(--paper)"/>
-            <ellipse cx="101" cy="68" rx="30" ry="22" fill="var(--paper)"/>
-            <path d="M88 66 q4 -4 8 0 M106 66 q4 -4 8 0"/>
-            <path d="M52 80 H150 V128 H52Z" fill="var(--paper)"/>
-            <path d="M52 80 L38 64 M150 80 L164 64"/>
-          </svg>
-        </div>
-        <span class="rubric">Snouts &amp; Murmurs</span>
-        <h3><a href="#news">Opinion: I Am a Cat and I Did Not Ask to Be Born Into This Box</a></h3>
-        <p class="dek">I merely got in. There is a difference, and I would like it on the record.</p>
-        <p class="meta">By Mittens (as told to nobody) · 5 min read</p>
-      </article>
-    </section>
-
-  <section class="wire" id="wire" aria-labelledby="wire-title">
-    <div class="wire-head">
-      <div>
-        <span class="rubric">The Wire · Real news</span>
-        <h2 id="wire-title">It Actually Happened</h2>
+      <div class="art" role="img" aria-label="Illustration: a snake coiled through the grille of a car, tongue out">
+        <svg viewBox="0 0 200 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M52 40 L66 18 H134 L148 40" fill="var(--paper)"/>
+  <rect x="30" y="40" width="140" height="66" rx="14" fill="var(--paper)"/>
+  <rect x="38" y="106" width="22" height="18" fill="currentColor"/>
+  <rect x="140" y="106" width="22" height="18" fill="currentColor"/>
+  <circle cx="50" cy="62" r="9" fill="var(--paper)"/>
+  <circle cx="150" cy="62" r="9" fill="var(--paper)"/>
+  <rect x="70" y="56" width="60" height="36" fill="var(--paper)"/>
+  <path d="M70 68 H130 M70 80 H130"/>
+  <path d="M60 96 C74 96 78 86 88 74 C98 62 104 86 114 74 C122 64 126 58 136 54" stroke-width="10"/>
+  <path d="M60 96 C74 96 78 86 88 74 C98 62 104 86 114 74 C122 64 126 58 136 54" stroke="var(--paper)" stroke-width="4"/>
+  <ellipse cx="142" cy="50" rx="10" ry="7" fill="var(--paper)"/>
+  <circle cx="145" cy="47" r="1.8" fill="currentColor" stroke="none"/>
+  <path d="M152 51 l9 -1 M161 50 l4 -3 M161 50 l4 3" stroke-width="2"/>
+        </svg>
       </div>
-      <p>Everything in this section was reported by real news outlets. We link to the original, write our own summary, and add one joke about the animal.</p>
-    </div>
-    <div class="wgrid">
-      <article class="wcard">
-        <div class="wtop"><span class="stamp">Reported</span><span>UPI · Sept. 24, 2026</span></div>
-        <h3>Emu escapes from Japanese zoo, leads police on 2-hour chase</h3>
-        <p class="sum"><span class="meta" style="color:var(--wire-ink)">Moriyama, Japan ·</span> A young emu walked out of a mobile zoo through a door that is usually shut and spent about two hours running through a residential neighborhood. A passerby called it in as an ostrich. Staff caught it at an apartment complex; no one was hurt.</p>
-        <p class="take"><b>Porker Take</b>The emu maintains he was not escaping. He was “seeing Moriyama.”</p>
-        <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/24/japan-escaped-emu-zoo-Moriyama/2161790267116/" target="_blank" rel="noopener">Read it at UPI ↗</a>
-      </article>
-      <article class="wcard">
+        <span class="rubric">Stowaways · Franklin Township, N.J.</span>
+        <h3><a href="https://www.upi.com/Odd_News/2026/09/22/ball-python-car-Franklin-Township-New-Jersey/8681790094020" target="_blank" rel="noopener">Ball Python Rescued From Front Grille of New Jersey Car</a></h3>
         <div class="wtop"><span class="stamp">Reported</span><span>UPI · Sept. 22, 2026</span></div>
-        <h3>Ball python rescued from front grille of New Jersey car</h3>
-        <p class="sum"><span class="meta" style="color:var(--wire-ink)">Franklin Township, N.J. ·</span> A driver found a 3-foot ball python wedged in her car’s front grille after a wheel alignment. Officers took off the bumper to free it, which took about 20 minutes. The snake was unharmed and went to the local shelter.</p>
+        <p class="dek">A driver found a 3-foot ball python wedged in her car’s grille after a wheel alignment. Officers took the bumper off to free it. The snake was unharmed.</p>
         <p class="take"><b>Porker Take</b>The python says it was only there to make sure the alignment was done right.</p>
         <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/22/ball-python-car-Franklin-Township-New-Jersey/8681790094020" target="_blank" rel="noopener">Read it at UPI ↗</a>
       </article>
-      <article class="wcard">
+      <article class="card">
+      <div class="art" role="img" aria-label="Illustration: a wide-eyed squirrel in stadium bleachers holding a foam finger">
+        <svg viewBox="0 0 200 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M10 112 H190 M10 128 H190 M30 112 V128 M70 112 V128 M130 112 V128 M170 112 V128"/>
+  <path d="M112 106 C140 104 150 76 140 52 C132 34 150 22 162 32 C150 32 150 46 156 58 C166 82 154 110 118 112" fill="var(--paper)"/>
+  <ellipse cx="96" cy="88" rx="22" ry="24" fill="var(--paper)"/>
+  <path d="M84 48 L82 34 L92 44 M108 48 L110 34 L100 44" fill="var(--paper)"/>
+  <circle cx="96" cy="58" r="16" fill="var(--paper)"/>
+  <circle cx="90" cy="56" r="4" fill="var(--paper)"/><circle cx="102" cy="56" r="4" fill="var(--paper)"/>
+  <circle cx="90" cy="56" r="1.5" fill="currentColor" stroke="none"/><circle cx="102" cy="56" r="1.5" fill="currentColor" stroke="none"/>
+  <path d="M93 66 q3 3 6 0"/>
+  <path d="M72 44 l-8 -6 M70 58 h-10 M120 44 l8 -6 M122 58 h10"/>
+  <path d="M60 100 V80 h14 V100 Z M64 80 V62 h6 V80" fill="var(--paper)"/>
+  <path d="M76 90 L72 92"/>
+        </svg>
+      </div>
+        <span class="rubric">Crowd Control · Columbus, Ohio</span>
+        <h3><a href="https://www.upi.com/Odd_News/2026/09/11/Perry-Township-Ohio-State-squirrel/9691789147583/" target="_blank" rel="noopener">“Overwhelmed” Squirrel Rescued From Stands at Ohio State Game</a></h3>
         <div class="wtop"><span class="stamp">Reported</span><span>UPI · Sept. 11, 2026</span></div>
-        <h3>“Overwhelmed” squirrel rescued from stands at Ohio State game</h3>
-        <p class="sum"><span class="meta" style="color:var(--wire-ink)">Columbus, Ohio ·</span> Police were called into the stands during Ohio State’s game against Ball State to retrieve a squirrel that had wandered in and, in their words, become overwhelmed.</p>
-        <p class="take"><b>Porker Take</b>The squirrel has asked for a quieter seat, and for the band to “take it down a notch.”</p>
+        <p class="dek">Police went into the stands during Ohio State’s game against Ball State to retrieve a squirrel that had wandered in and, in their word, become overwhelmed.</p>
+        <p class="take"><b>Porker Take</b>The squirrel has asked for a quieter seat, and for the band to take it down a notch.</p>
         <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/11/Perry-Township-Ohio-State-squirrel/9691789147583/" target="_blank" rel="noopener">Read it at UPI ↗</a>
       </article>
-      <article class="wcard">
+      <article class="card">
+      <div class="art" role="img" aria-label="Illustration: a pig peeking out of a bush, nostrils first">
+        <svg viewBox="0 0 200 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M18 122 H182"/>
+  <path d="M28 122 C14 104 30 82 52 90 C52 64 86 56 98 76 C110 54 146 60 146 86 C170 82 184 108 168 122 Z" fill="var(--paper)"/>
+  <path d="M84 72 L78 56 L94 66" fill="var(--paper)"/>
+  <path d="M116 72 L122 56 L106 66" fill="var(--paper)"/>
+  <circle cx="100" cy="84" r="22" fill="var(--paper)"/>
+  <ellipse cx="100" cy="94" rx="11" ry="8" fill="var(--paper)"/>
+  <circle cx="96" cy="94" r="2" fill="currentColor" stroke="none"/><circle cx="104" cy="94" r="2" fill="currentColor" stroke="none"/>
+  <circle cx="91" cy="80" r="2.2" fill="currentColor" stroke="none"/><circle cx="109" cy="80" r="2.2" fill="currentColor" stroke="none"/>
+  <path d="M40 104 l6 -5 l6 5 M60 112 l6 -5 l6 5 M136 106 l6 -5 l6 5 M152 114 l6 -5 l6 5 M66 84 l6 -5 l6 5"/>
+        </svg>
+      </div>
+        <span class="rubric">Fugitives · Detroit</span>
+        <h3><a href="https://www.upi.com/Odd_News/2026/09/03/detroit-pigs-one-captured/1901788457595/" target="_blank" rel="noopener">One of Two Loose Pigs Captured in Detroit Neighborhood</a></h3>
         <div class="wtop"><span class="stamp">Reported</span><span>UPI · Sept. 3, 2026</span></div>
-        <h3>One of two loose pigs captured in Detroit neighborhood</h3>
-        <p class="sum"><span class="meta" style="color:var(--wire-ink)">Detroit ·</span> Two pigs showed up on a Detroit street. Animal control chased one for more than an hour, jumping and swerving, before cornering him in a bush. The second pig remained at large.</p>
+        <p class="dek">Two pigs turned up on a Detroit street. Animal control chased one for more than an hour before cornering him in a bush. The second pig remained at large.</p>
         <p class="take"><b>Porker Take</b>The New Porker has reached the second pig, who is not ready to talk.</p>
         <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/03/detroit-pigs-one-captured/1901788457595/" target="_blank" rel="noopener">Read it at UPI ↗</a>
       </article>
-      <article class="wcard">
+      <article class="card">
+      <div class="art" role="img" aria-label="Illustration: a tiny kitten peeking out from beside a car engine under an open hood">
+        <svg viewBox="0 0 200 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M28 52 L56 12 H144 L172 52" fill="var(--paper)"/>
+  <path d="M164 52 L152 22"/>
+  <rect x="28" y="52" width="144" height="62" fill="var(--paper)"/>
+  <rect x="48" y="64" width="64" height="38" rx="4" fill="var(--paper)"/>
+  <path d="M56 64 V56 M72 64 V56 M88 64 V56 M104 64 V56 M56 76 H104 M56 88 H104"/>
+  <path d="M112 90 C124 96 120 108 132 108"/>
+  <path d="M126 62 L128 50 L136 58 M150 62 L148 50 L140 58" fill="var(--paper)"/>
+  <circle cx="138" cy="72" r="14" fill="var(--paper)"/>
+  <circle cx="133" cy="70" r="3" fill="currentColor" stroke="none"/><circle cx="143" cy="70" r="3" fill="currentColor" stroke="none"/>
+  <path d="M136 77 l2 2 l2 -2 M122 74 h-8 M122 79 l-8 2 M154 74 h8 M154 79 l8 2" stroke-width="2"/>
+        </svg>
+      </div>
+        <span class="rubric">Stowaways · Kerrville, Texas</span>
+        <h3><a href="https://www.upi.com/Odd_News/2026/09/03/kitten-engine-bay-Kerrville-Texas/1341788461352/" target="_blank" rel="noopener">Kitten Stows Away in Engine Compartment for Nearly 80-Mile Drive</a></h3>
         <div class="wtop"><span class="stamp">Reported</span><span>UPI · Sept. 3, 2026</span></div>
-        <h3>Kitten stows away in engine compartment for nearly 80-mile drive</h3>
-        <p class="sum"><span class="meta" style="color:var(--wire-ink)">Kerrville, Texas ·</span> A newborn kitten rode inside a vehicle’s engine compartment from Rocksprings to Kerrville, Texas, a trip of about 76 miles, before it was found and rescued.</p>
-        <p class="take"><b>Porker Take</b>The kitten describes the trip as “loud, warm, and 76 miles longer than planned.”</p>
+        <p class="dek">A newborn kitten rode inside a vehicle’s engine compartment from Rocksprings to Kerrville, about 76 miles, before it was found and rescued.</p>
+        <p class="take"><b>Porker Take</b>The kitten calls the trip “loud, warm, and 76 miles longer than planned.”</p>
         <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/03/kitten-engine-bay-Kerrville-Texas/1341788461352/" target="_blank" rel="noopener">Read it at UPI ↗</a>
       </article>
-      <article class="wcard">
-        <div class="wtop"><span class="stamp">Reported</span><span>UPI · Sept. 17, 2026</span></div>
-        <h3>Venomous sea snake makes rare appearance at California beach</h3>
-        <p class="sum"><span class="meta" style="color:var(--wire-ink)">Crystal Cove, Calif. ·</span> A beachgoer filmed a highly venomous yellow-bellied sea snake on the sand at Crystal Cove in Orange County, a rare sighting that far north.</p>
-        <p class="take"><b>Porker Take</b>The snake would like it known that it was there first, and that it does not share towels.</p>
-        <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/17/yellow-bellied-sea-snake-Chrystal-Cove-California/8871789660407/" target="_blank" rel="noopener">Read it at UPI ↗</a>
+      <article class="card">
+      <div class="art" role="img" aria-label="Illustration: a raccoon with its head poking up through a highway sewer grate">
+        <svg viewBox="0 0 200 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M10 30 H40 M60 30 H90 M110 30 H140 M160 30 H190" stroke-width="4"/>
+  <path d="M10 124 H190"/>
+  <path d="M80 56 L76 40 L90 50 M120 56 L124 40 L110 50" fill="var(--paper)"/>
+  <ellipse cx="100" cy="66" rx="24" ry="19" fill="var(--paper)"/>
+  <path d="M78 64 Q88 54 98 66 Q100 68 102 66 Q112 54 122 64 Q112 76 102 72 Q100 74 98 72 Q88 76 78 64Z" fill="currentColor"/>
+  <circle cx="90" cy="64" r="2.5" fill="var(--paper)" stroke="none"/><circle cx="110" cy="64" r="2.5" fill="var(--paper)" stroke="none"/>
+  <ellipse cx="100" cy="78" rx="4" ry="3" fill="currentColor"/>
+  <rect x="56" y="84" width="88" height="40" fill="var(--paper)"/>
+  <path d="M68 84 V124 M80 84 V124 M92 84 V124 M104 84 V124 M116 84 V124 M128 84 V124"/>
+  <ellipse cx="84" cy="86" rx="7" ry="4" fill="var(--paper)"/><ellipse cx="116" cy="86" rx="7" ry="4" fill="var(--paper)"/>
+        </svg>
+      </div>
+        <span class="rubric">Stuck · Burlington, Ont.</span>
+        <h3><a href="https://www.upi.com/Odd_News/2026/09/23/canada-raccoon-highway-sewer-grate-Burlington/2841790175647" target="_blank" rel="noopener">Stuck Raccoon Rescued From Highway Sewer Grate</a></h3>
+        <div class="wtop"><span class="stamp">Reported</span><span>UPI · Sept. 23, 2026</span></div>
+        <p class="dek">Drivers spotted a raccoon’s head poking out of a sewer grate on a Highway 403 ramp. Provincial police closed a lane, lifted the grate, and the raccoon, nicknamed Rocky, left on foot.</p>
+        <p class="take"><b>Porker Take</b>Rocky says he was not stuck. He was waiting for a gap in traffic.</p>
+        <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/23/canada-raccoon-highway-sewer-grate-Burlington/2841790175647" target="_blank" rel="noopener">Read it at UPI ↗</a>
       </article>
-    </div>
-    <p class="wire-foot">Mockup snapshot: stories found Sept. 26, 2026. On the live site this section refreshes several times a day from news feeds, after an editor approves each item.</p>
-  </section>
+      <article class="card">
+      <div class="art" role="img" aria-label="Illustration: an enormous brown bear sitting contentedly with a fish and a prize rosette">
+        <svg viewBox="0 0 200 140" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="M14 130 H186"/>
+  <ellipse cx="100" cy="90" rx="54" ry="40" fill="var(--paper)"/>
+  <circle cx="84" cy="32" r="7" fill="var(--paper)"/><circle cx="116" cy="32" r="7" fill="var(--paper)"/>
+  <circle cx="100" cy="46" r="20" fill="var(--paper)"/>
+  <ellipse cx="100" cy="54" rx="8" ry="6" fill="var(--paper)"/>
+  <ellipse cx="100" cy="51" rx="3" ry="2" fill="currentColor"/>
+  <path d="M91 42 q2 -2 4 0 M105 42 q2 -2 4 0"/>
+  <path d="M82 112 q18 10 36 0" />
+  <path d="M136 78 C146 70 164 70 170 78 C164 86 146 86 136 78Z M170 78 l10 -7 v14 Z" fill="var(--paper)"/>
+  <circle cx="72" cy="80" r="8" fill="var(--snout)" stroke="currentColor"/>
+  <path d="M68 88 l-4 14 M76 88 l4 14"/>
+        </svg>
+      </div>
+        <span class="rubric">Pageantry · Katmai National Park, Alaska</span>
+        <h3><a href="https://www.upi.com/Odd_News/2026/09/24/Katmai-National-Park-Fat-Bear-Week/4691790272376/" target="_blank" rel="noopener">Voting Underway for Fat Bear Week at Alaska’s Katmai National Park</a></h3>
+        <div class="wtop"><span class="stamp">Reported</span><span>UPI · Sept. 24, 2026</span></div>
+        <p class="dek">This year’s bracket has 16 brown bears, up from the usual 12, including last year’s winner, 32 Chunk. First-round voting was extended a day after demand crashed the website.</p>
+        <p class="take"><b>Porker Take</b>The bears have been told the website went down. They are too full to care.</p>
+        <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/24/Katmai-National-Park-Fat-Bear-Week/4691790272376/" target="_blank" rel="noopener">Read it at UPI ↗</a>
+      </article>
+    </section>
   </main>
 
   <section class="games" id="games" aria-labelledby="games-title">
@@ -497,13 +527,13 @@ footer .logo{font-family:var(--display);font-size:30px}
     </figure>
 
     <div class="talk" id="talk">
-      <span class="rubric">Talk of the Farm</span>
-      <h2>Dispatches</h2>
+      <span class="rubric">Also Reported</span>
+      <h2>In Brief</h2>
       <ol>
-        <li><span class="meta">Finance</span><div><h3><a href="#talk">Crows Launch Venture Fund Focused Exclusively on Shiny Things</a></h3><p>Their first investment was a bottle cap. Their second was a different bottle cap.</p></div></li>
-        <li><span class="meta">Society</span><div><h3><a href="#talk">Emperor Penguin Announces Divorce in Carefully Worded Post</a></h3><p>The couple asks for privacy, and for everyone to stop pointing out that they look identical.</p></div></li>
-        <li><span class="meta">Infrastructure</span><div><h3><a href="#talk">Beaver Dam Project Over Budget, Behind Schedule</a></h3><p>Critics call the overruns “very beaver.” The beaver called them “a feature.”</p></div></li>
-        <li><span class="meta">Crime</span><div><h3><a href="#talk">Pigeon Arrested for Impersonating a Dove at Wedding</a></h3><p>Guests became suspicious when he ate a french fry off the cake.</p></div></li>
+        <li><span class="meta">Fugitives<br>Sept. 9</span><div><h3><a href="https://www.upi.com/Odd_News/2026/09/09/Snohomish-County-Washington-escaped-goat/5371788965345" target="_blank" rel="noopener">“Really Strong” Goat Wrangled in Washington Neighborhood</a></h3><p>Sheriff’s deputies in Snohomish County were called about an escaped goat with foot-long horns that was trying to ram residents. <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/09/Snohomish-County-Washington-escaped-goat/5371788965345" target="_blank" rel="noopener">UPI ↗</a></p></div></li>
+        <li><span class="meta">Nursery<br>Sept. 3</span><div><h3><a href="https://www.upi.com/Odd_News/2026/09/03/Ripleys-Aquarium-Myrtle-Beach-penguin-baby-boom/5631788459551/" target="_blank" rel="noopener">S.C. Aquarium Celebrates “Lucky Seven” Penguin Baby Boom</a></h3><p>Five African penguin chicks hatched at Ripley’s Aquarium of Myrtle Beach, bringing the year’s total to seven for a critically endangered species. <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/03/Ripleys-Aquarium-Myrtle-Beach-penguin-baby-boom/5631788459551/" target="_blank" rel="noopener">UPI ↗</a></p></div></li>
+        <li><span class="meta">Encounters<br>Sept. 17</span><div><h3><a href="https://www.upi.com/Odd_News/2026/09/17/yellow-bellied-sea-snake-Chrystal-Cove-California/8871789660407/" target="_blank" rel="noopener">Venomous Sea Snake Makes Rare Appearance at California Beach</a></h3><p>A beachgoer filmed a yellow-bellied sea snake on the sand at Crystal Cove in Orange County. <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/17/yellow-bellied-sea-snake-Chrystal-Cove-California/8871789660407/" target="_blank" rel="noopener">UPI ↗</a></p></div></li>
+        <li><span class="meta">Encounters<br>Sept. 2</span><div><h3><a href="https://www.upi.com/Odd_News/2026/09/02/Big-Sky-Montana-moose-dogs-bear-spray/2081788370442/" target="_blank" rel="noopener">Montana Woman Uses Bear Spray to Ward Off Charging Moose</a></h3><p>A woman walking her dogs in Big Sky used bear spray to turn back a moose that charged them. <a class="wlink" href="https://www.upi.com/Odd_News/2026/09/02/Big-Sky-Montana-moose-dogs-bear-spray/2081788370442/" target="_blank" rel="noopener">UPI ↗</a></p></div></li>
       </ol>
     </div>
   </section>
@@ -511,7 +541,7 @@ footer .logo{font-family:var(--display);font-size:30px}
   <footer id="newsletter">
     <div>
       <div class="logo">The New Porker</div>
-      <p class="disclaimer" style="margin-top:8px">The Daily Trough newsletter: one absurd headline and today’s puzzles, every morning.</p>
+      <p class="disclaimer" style="margin-top:8px">The Daily Trough newsletter: the day’s most ridiculous real animal story and today’s puzzles, every morning.</p>
       <form class="nl" id="nlForm" novalidate>
         <label for="nlEmail" class="meta" style="flex-basis:100%">Email address</label>
         <input id="nlEmail" type="email" placeholder="you@barn.com" autocomplete="email">
@@ -519,7 +549,7 @@ footer .logo{font-family:var(--display);font-size:30px}
       </form>
       <p class="nl-msg" id="nlMsg" aria-live="polite"></p>
     </div>
-    <p class="disclaimer">The New Porker is a work of satire. It is not affiliated with, endorsed by, or connected to The New Yorker or Condé Nast. All stories are fiction except items in The Wire, which are real news reported by the outlets we link to. All other animals are fictional, except the ones who are just very good. No raccoons were harmed in the making of this issue, though several were mildly inconvenienced.</p>
+    <p class="disclaimer">Every story on The New Porker really happened and was reported by the news outlet we link to. The summaries are written by us; the Porker Takes, cartoons, and captions are jokes; and Real or Porker? mixes in made-up headlines, which it always reveals. The New Porker is a parody and is not affiliated with, endorsed by, or connected to The New Yorker or Condé Nast. No raccoons were harmed in the making of this issue, though one was briefly stuck.</p>
   </footer>
 </div>
 

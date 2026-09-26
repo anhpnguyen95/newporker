@@ -1,8 +1,10 @@
 # The New Porker — Product Requirements Document
 
-**Status:** Draft v0.2 · **Date:** 2026-09-26 · **Owner:** anhpnguyen95
+**Status:** Draft v0.3 · **Date:** 2026-09-26 · **Owner:** anhpnguyen95
 
 > *The New Porker* is a satirical magazine website about animals doing wild things, written in the voice of a very serious literary weekly. It pairs invented stories with **real news of animals behaving ridiculously**, pulled automatically from news feeds and clearly labeled as real. It also has a daily games section that parodies prestige-magazine puzzles.
+
+**Changes in v0.3:** the site is now **real news only**. Every story is a real, reported animal oddity from The Wire, shown with our own illustration in the house style, our own summary, a REPORTED stamp, a link to the source, and a one-line Porker Take. Invented stories are gone. Satire survives only in the Porker Takes, cartoons, captions, and the decoy headlines in Real or Porker?. Where older sections below describe invented stories (§6.1–6.3), they are superseded by §6.5.
 
 **Changes in v0.2:** added The Wire, a real-news feed of animal oddities (§6.4, §10.1); a new game, Real or Porker? (§7.6); guardrails for mixing real and satirical content (§4.7–4.11).
 
@@ -48,7 +50,7 @@ The third pillar is **Games**: small, daily, shareable puzzles that parody magaz
 These are requirements, not suggestions.
 
 1. **Distinct identity.** Name is *The New Porker*. We do **not** use *The New Yorker*'s logo, the Irvin typeface, their Eustace Tilley artwork, their cover layouts, or their trade dress. Our mascot is an original character, **Eustace Swilley** (a pig with a monocle, examining a butterfly-shaped truffle).
-2. **Visible disclaimer** in the footer of every page and on the About page: *"The New Porker is a work of satire. It is not affiliated with, endorsed by, or connected to The New Yorker or Condé Nast. All stories are fiction except items in The Wire, which are real news reported by the outlets we link to. All other animals are fictional, except the ones who are just very good."*
+2. **Visible disclaimer** in the footer of every page and on the About page. v0.3 text: *"Every story on The New Porker really happened and was reported by the news outlet we link to. The summaries are written by us; the Porker Takes, cartoons, and captions are jokes; and Real or Porker? mixes in made-up headlines, which it always reveals. The New Porker is a parody and is not affiliated with The New Yorker or Condé Nast."* (v0.2 text, kept for reference: *"The New Porker is a work of satire. It is not affiliated with, endorsed by, or connected to The New Yorker or Condé Nast. All stories are fiction except items in The Wire, which are real news reported by the outlets we link to. All other animals are fictional, except the ones who are just very good."*
 3. **Game names are puns, not copies.** Mechanics are generic (word-finding, grouping, crosswords) and all puzzle content is original.
 4. **No real humans as subjects of fake news.** Stories are about animals. Human public figures may not be quoted or depicted doing things they did not do.
 5. **No real brands defamed.** Fictional companies only ("Chewy's rival, Gnawy").
@@ -66,7 +68,7 @@ These are requirements, not suggestions.
 
 ```
 /                       Home (the "issue")
-/news/                  Fake News — all satirical stories, newest first
+/news/                  All stories (real, reported), newest first. In v0.3 this and /wire/ are the same feed
 /wire/                  The Wire — real animal oddities from the news, newest first
 /wire/<slug>/           Wire item page (headline, summary, source link, Porker Take)
 /news/<slug>/           Story page
@@ -84,7 +86,7 @@ These are requirements, not suggestions.
 /about/                 About + satire disclaimer
 ```
 
-Primary nav: **News · The Wire · Snouts & Murmurs · Culture · Cartoons · Games · The Magazine**. Utility nav: *Newsletter*, *Subscribe* (joke).
+Primary nav (v0.3): **Latest · Fugitives · Stowaways · Stuck · Encounters · Cartoons · Games**. Utility nav: *Newsletter*, *Subscribe* (joke).
 
 ## 6. Content model
 
@@ -131,6 +133,23 @@ Sample headlines to set the voice:
 - "Emperor Penguin Announces Divorce in Carefully Worded Instagram Post"
 - "Beaver Dam Project Over Budget, Behind Schedule, Critics Say 'Very Beaver'"
 - "Pigeon Arrested for Impersonating a Dove at Wedding"
+
+### 6.5 Real-news sections (v0.3, supersedes §6.1–6.3)
+
+Stories are filed by what the animal did, not by magazine department:
+
+| Section | What goes there | Example |
+|---|---|---|
+| **Fugitives** | Escapes, chases, animals at large | Emu leads police on two-hour chase (Moriyama, Japan) |
+| **Stowaways** | Animals found riding in cars, planes, luggage | Kitten rides ~76 miles in an engine bay (Texas) |
+| **Stuck** | Grates, grilles, fences, chimneys | Raccoon rescued from a highway sewer grate (Ontario) |
+| **Crowd Control** | Animals at games, stores, schools, events | "Overwhelmed" squirrel in the stands at Ohio State |
+| **Encounters** | Close calls with wildlife | Moose turned back with bear spray (Montana) |
+| **Pageantry** | Contests, records, births, ceremonies | Fat Bear Week voting; "Lucky Seven" penguin chicks |
+
+Each story page: illustration commissioned in the house style (flat line drawing on pink wash, see DESIGN §8), our headline in title case taken from the source headline, REPORTED stamp with outlet and date, our 2–4 sentence summary, the Porker Take, and a prominent "Read it at [outlet] ↗" link. The home page shows one lead story, a grid of six, and an "In Brief" list of text-only items.
+
+**Launch content (replaces §6.3):** 30 real stories with illustrations, backfilled from the previous 60 days of feeds; 12 cartoons; 30 days of puzzles per game.
 
 ### 6.4 The Wire (real news)
 

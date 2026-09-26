@@ -2,6 +2,8 @@
 
 Companion to [`PRD.md`](./PRD.md). A clickable mockup of the home page and two games lives at [`design/mockup.html`](../design/mockup.html).
 
+> **v0.3 note:** the site is now real news only (see PRD v0.3). Every story uses the house illustration style (§8) and headline type (Gloock); the real-news signals are the REPORTED stamp, the Plex Mono source line (outlet · date), the Porker Take block, and the "Read it at [outlet] ↗" link. The green `--wire` surface is now used only in Real or Porker? to reveal a real headline.
+
 ## 1. Design principles
 
 1. **Dress like a serious magazine, act like a barnyard.** The layout, typography, and spacing are restrained and literary. The jokes live in the words and the illustrations, never in the chrome.
@@ -108,7 +110,7 @@ Scale (px): 12 · 14 · 16 · 19 · 24 · 32 · 44 · 60.
 - Flat vector, two ink weights, limited palette (ink + one tint per piece), lots of paper showing. Animals drawn with human dignity: posture, props, and expression do the comedy.
 - Cartoons: single panel, ink line only, caption in Newsreader italic below.
 - Credits under every illustration in the fictional staff's names.
-- Wire items never use source photos. Each gets a species spot icon (single-line ink drawing, 48px) from a shared icon set; the icon library grows as new species show up in the feed.
+- Real stories never use source photos. Each story gets its own illustration in this style, drawn from what the report says happened (an emu passing an apartment block, a python threaded through a car grille, a raccoon's head up through a sewer grate). The drawing shows the animal, never identifiable people. In Brief items are text-only.
 
 ## 9. Motion
 
